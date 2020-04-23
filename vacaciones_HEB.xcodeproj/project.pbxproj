@@ -32,6 +32,7 @@
 		3265D20B244FAD6A004949AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A21BA12450F38F0089E31A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32A21BA3245141D90089E31A /* SolicitudViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudViewController.swift; sourceTree = "<group>"; };
+		32C785462452067000C51B52 /* Solicitud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solicitud.swift; sourceTree = "<group>"; };
 		5FD7144A24511A770089A2C3 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 		5FD7144C24511ABF0089A2C3 /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
 		6BBCF35BEE31BF1B1C4BC8C6 /* Pods-vacaciones_HEB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vacaciones_HEB.release.xcconfig"; path = "Target Support Files/Pods-vacaciones_HEB/Pods-vacaciones_HEB.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 				3265D1FF244FAD4F004949AE /* SceneDelegate.swift */,
 				3265D201244FAD4F004949AE /* AuthViewController.swift */,
 				3265D203244FAD4F004949AE /* Main.storyboard */,
+				32C785462452067000C51B52 /* Solicitud.swift */,
 				8B1547332451D51400D70DDE /* DetalleSolViewController.swift */,
 				32A21BA3245141D90089E31A /* SolicitudViewController.swift */,
 				5FD7144C24511ABF0089A2C3 /* EmployeeViewController.swift */,

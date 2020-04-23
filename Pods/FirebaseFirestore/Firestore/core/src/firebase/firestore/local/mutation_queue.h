@@ -19,24 +19,29 @@
 
 #include <vector>
 
-#include "Firestore/core/include/firebase/firestore/timestamp.h"
-#include "Firestore/core/src/firebase/firestore/core/query.h"
-#include "Firestore/core/src/firebase/firestore/model/document_key.h"
-#include "Firestore/core/src/firebase/firestore/model/document_key_set.h"
-#include "Firestore/core/src/firebase/firestore/model/mutation_batch.h"
+#include "Firestore/core/src/firebase/firestore/model/model_fwd.h"
 #include "Firestore/core/src/firebase/firestore/model/types.h"
-#include "Firestore/core/src/firebase/firestore/nanopb/byte_string.h"
 #include "absl/types/optional.h"
 
 namespace firebase {
+class Timestamp;
+
 namespace firestore {
+
+namespace core {
+class Query;
+}  // namespace core
+
+namespace nanopb {
+class ByteString;
+}  // namespace nanopb
+
 namespace local {
 
 /** A queue of mutations to apply to the remote store. */
 class MutationQueue {
  public:
-  virtual ~MutationQueue() {
-  }
+  virtual ~MutationQueue() = default;
 
   /**
    * Starts the mutation queue, performing any initial reads that might be
@@ -162,7 +167,7 @@ class MutationQueue {
   virtual nanopb::ByteString GetLastStreamToken() = 0;
 
   /** Sets the stream token for this mutation queue. */
-  virtual void SetLastStreamToken(const nanopb::ByteString& stream_token) = 0;
+  virtual void SetLastStreamToken(nanopb::ByteString stream_token) = 0;
 };
 
 }  // namespace local

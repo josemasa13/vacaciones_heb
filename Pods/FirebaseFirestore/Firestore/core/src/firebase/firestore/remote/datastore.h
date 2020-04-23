@@ -17,10 +17,6 @@
 #ifndef FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_REMOTE_DATASTORE_H_
 #define FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_REMOTE_DATASTORE_H_
 
-#if !defined(__OBJC__)
-#error "This header only supports Objective-C++"
-#endif  // !defined(__OBJC__)
-
 #include <functional>
 #include <memory>
 #include <string>
@@ -28,7 +24,7 @@
 
 #include "Firestore/core/src/firebase/firestore/auth/credentials_provider.h"
 #include "Firestore/core/src/firebase/firestore/auth/token.h"
-#include "Firestore/core/src/firebase/firestore/core/database_info.h"
+#include "Firestore/core/src/firebase/firestore/core/core_fwd.h"
 #include "Firestore/core/src/firebase/firestore/model/document_key.h"
 #include "Firestore/core/src/firebase/firestore/remote/grpc_call.h"
 #include "Firestore/core/src/firebase/firestore/remote/grpc_connection.h"
@@ -63,17 +59,15 @@ namespace remote {
  */
 class Datastore : public std::enable_shared_from_this<Datastore> {
  public:
-  // TODO(varconst): change this to take a single `StatusOr` parameter.
   using LookupCallback = std::function<void(
-      const std::vector<model::MaybeDocument>&, const util::Status&)>;
+      const util::StatusOr<std::vector<model::MaybeDocument>>&)>;
   using CommitCallback = std::function<void(const util::Status&)>;
 
   Datastore(const core::DatabaseInfo& database_info,
             const std::shared_ptr<util::AsyncQueue>& worker_queue,
             std::shared_ptr<auth::CredentialsProvider> credentials);
 
-  virtual ~Datastore() {
-  }
+  virtual ~Datastore() = default;
 
   /** Starts polling the gRPC completion queue. */
   void Start();
@@ -195,7 +189,7 @@ class Datastore : public std::enable_shared_from_this<Datastore> {
   GrpcConnection grpc_connection_;
 
   std::vector<std::unique_ptr<GrpcCall>> active_calls_;
-  bridge::DatastoreSerializer serializer_bridge_;
+  DatastoreSerializer datastore_serializer_;
 };
 
 }  // namespace remote

@@ -24,7 +24,6 @@
 #include <vector>
 
 #include "Firestore/core/src/firebase/firestore/model/field_value.h"
-#include "Firestore/core/src/firebase/firestore/util/hard_assert.h"
 #include "absl/types/optional.h"
 
 namespace firebase {
@@ -67,6 +66,11 @@ class TransformOperation {
     return rep().type();
   }
 
+ private:
+  // TODO(b/146372592): Make this public once we can use Abseil across
+  // iOS/public C++ library boundaries.
+  friend class TransformMutation;
+
   /**
    * Computes the local transform result against the provided `previous_value`,
    * optionally using the provided local_write_time.
@@ -106,6 +110,7 @@ class TransformOperation {
     return rep().ComputeBaseValue(previous_value);
   }
 
+ public:
   /** Returns whether the two are equal. */
   friend bool operator==(const TransformOperation& lhs,
                          const TransformOperation& rhs);

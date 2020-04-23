@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,13 +48,12 @@ class FieldMask {
 
   FieldMask(std::initializer_list<FieldPath> list) : fields_{list} {
   }
+
   template <class InputIt>
   FieldMask(InputIt first, InputIt last) : fields_{first, last} {
   }
-  explicit FieldMask(std::set<FieldPath> fields) : fields_{std::move(fields)} {
-  }
 
-  FieldMask(const FieldMask& f) : fields_{f.begin(), f.end()} {
+  explicit FieldMask(std::set<FieldPath> fields) : fields_{std::move(fields)} {
   }
 
   const_iterator begin() const {
@@ -69,12 +68,12 @@ class FieldMask {
   }
 
   /**
-   * Verifies that `fieldPath` is included by at least one field in this field
+   * Verifies that `field_path` is included by at least one field in this field
    * mask.
    *
    * This is an O(n) operation, where `n` is the size of the field mask.
    */
-  bool covers(const FieldPath& fieldPath) const;
+  bool covers(const FieldPath& field_path) const;
 
   std::string ToString() const;
 

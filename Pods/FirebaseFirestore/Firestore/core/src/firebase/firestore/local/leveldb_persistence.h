@@ -17,10 +17,6 @@
 #ifndef FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_LOCAL_LEVELDB_PERSISTENCE_H_
 #define FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_LOCAL_LEVELDB_PERSISTENCE_H_
 
-#if !defined(__OBJC__)
-#error "This header only supports Objective-C++"
-#endif  // !defined(__OBJC__)
-
 #include <memory>
 #include <set>
 #include <string>
@@ -29,21 +25,19 @@
 #include "Firestore/core/src/firebase/firestore/local/leveldb_index_manager.h"
 #include "Firestore/core/src/firebase/firestore/local/leveldb_lru_reference_delegate.h"
 #include "Firestore/core/src/firebase/firestore/local/leveldb_mutation_queue.h"
-#include "Firestore/core/src/firebase/firestore/local/leveldb_query_cache.h"
 #include "Firestore/core/src/firebase/firestore/local/leveldb_remote_document_cache.h"
+#include "Firestore/core/src/firebase/firestore/local/leveldb_target_cache.h"
 #include "Firestore/core/src/firebase/firestore/local/leveldb_transaction.h"
+#include "Firestore/core/src/firebase/firestore/local/local_serializer.h"
 #include "Firestore/core/src/firebase/firestore/local/persistence.h"
 #include "Firestore/core/src/firebase/firestore/util/path.h"
 #include "Firestore/core/src/firebase/firestore/util/statusor.h"
 
-@class FSTLocalSerializer;
-
 namespace firebase {
 namespace firestore {
+
 namespace core {
-
 class DatabaseInfo;
-
 }  // namespace core
 
 namespace local {
@@ -59,30 +53,9 @@ class LevelDbPersistence : public Persistence {
    * containing details of the failure.
    */
   static util::StatusOr<std::unique_ptr<LevelDbPersistence>> Create(
-      util::Path dir,
-      FSTLocalSerializer* serializer,
-      const LruParams& lru_params);
+      util::Path dir, LocalSerializer serializer, const LruParams& lru_params);
 
-  /**
-   * Finds a suitable directory to serve as the root of all Firestore local
-   * storage.
-   */
-  static util::Path AppDataDirectory();
-
-  /**
-   * Computes a unique storage directory for the given identifying components of
-   * local storage.
-   *
-   * @param database_info The identifying information for the local storage
-   *     instance.
-   * @param documents_dir The root document directory relative to which
-   *     the storage directory will be created. Usually just
-   *     `LevelDbPersistence::AppDataDirectory()`.
-   * @return A storage directory unique to the instance identified by
-   *     `database_info`.
-   */
-  static util::Path StorageDirectory(const core::DatabaseInfo& database_info,
-                                     const util::Path& documents_dir);
+  ~LevelDbPersistence();
 
   LevelDbTransaction* current_transaction();
 
@@ -107,7 +80,7 @@ class LevelDbPersistence : public Persistence {
   LevelDbMutationQueue* GetMutationQueueForUser(
       const auth::User& user) override;
 
-  LevelDbQueryCache* query_cache() override;
+  LevelDbTargetCache* target_cache() override;
 
   LevelDbRemoteDocumentCache* remote_document_cache() override;
 
@@ -123,7 +96,7 @@ class LevelDbPersistence : public Persistence {
   LevelDbPersistence(std::unique_ptr<leveldb::DB> db,
                      util::Path directory,
                      std::set<std::string> users,
-                     FSTLocalSerializer* serializer,
+                     LocalSerializer serializer,
                      const LruParams& lru_params);
 
   /**
@@ -131,27 +104,19 @@ class LevelDbPersistence : public Persistence {
    */
   static util::Status EnsureDirectory(const util::Path& dir);
 
-  /**
-   * Marks the given directory as excluded from platform-specific backup schemes
-   * like iCloud backup.
-   */
-  static util::Status ExcludeFromBackups(const util::Path& dir);
-
   /** Opens the database within the given directory. */
   static util::StatusOr<std::unique_ptr<leveldb::DB>> OpenDb(
       const util::Path& dir);
-
-  static constexpr const char* kReservedPathComponent = "firestore";
 
   std::unique_ptr<leveldb::DB> db_;
 
   util::Path directory_;
   std::set<std::string> users_;
-  FSTLocalSerializer* serializer_;
+  LocalSerializer serializer_;
   bool started_ = false;
 
   std::unique_ptr<LevelDbMutationQueue> current_mutation_queue_;
-  std::unique_ptr<LevelDbQueryCache> query_cache_;
+  std::unique_ptr<LevelDbTargetCache> target_cache_;
   std::unique_ptr<LevelDbRemoteDocumentCache> document_cache_;
   std::unique_ptr<LevelDbIndexManager> index_manager_;
   std::unique_ptr<LevelDbLruReferenceDelegate> reference_delegate_;

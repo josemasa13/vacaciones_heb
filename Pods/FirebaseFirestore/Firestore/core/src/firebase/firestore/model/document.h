@@ -21,15 +21,36 @@
 #include <memory>
 #include <string>
 
-#include "Firestore/core/src/firebase/firestore/model/field_path.h"
-#include "Firestore/core/src/firebase/firestore/model/field_value.h"
 #include "Firestore/core/src/firebase/firestore/model/maybe_document.h"
 #include "absl/types/any.h"
 #include "absl/types/optional.h"
 
 namespace firebase {
 namespace firestore {
+
+typedef struct _google_firestore_v1_Document google_firestore_v1_Document;
+typedef struct _google_firestore_v1_Value google_firestore_v1_Value;
+
+namespace local {
+class LocalSerializer;
+}  // namespace local
+
+namespace nanopb {
+class Reader;
+
+template <typename T>
+class Message;
+}  // namespace nanopb
+
+namespace remote {
+class Serializer;
+}  // namespace remote
+
 namespace model {
+
+class FieldPath;
+class FieldValue;
+class ObjectValue;
 
 /** Describes the `has_pending_writes` state of a document. */
 enum class DocumentState {
@@ -62,12 +83,18 @@ class Document : public MaybeDocument {
            SnapshotVersion version,
            DocumentState document_state);
 
+ private:
+  // TODO(b/146372592): Make this public once we can use Abseil across
+  // iOS/public C++ library boundaries.
+  friend class remote::Serializer;
+
   Document(ObjectValue data,
            DocumentKey key,
            SnapshotVersion version,
            DocumentState document_state,
            absl::any proto);
 
+ public:
   /**
    * Casts a MaybeDocument to a Document. This is a checked operation that will
    * assert if the type of the MaybeDocument isn't actually Type::Document.

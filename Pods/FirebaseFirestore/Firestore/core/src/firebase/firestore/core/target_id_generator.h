@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ namespace firestore {
 namespace core {
 
 /** The set of all valid generators. */
-enum class TargetIdGeneratorId { QueryCache = 0, SyncEngine = 1 };
+enum class TargetIdGeneratorId { TargetCache = 0, SyncEngine = 1 };
 
 /**
  * Generates monotonically increasing target IDs for sending targets to the
@@ -46,10 +46,7 @@ enum class TargetIdGeneratorId { QueryCache = 0, SyncEngine = 1 };
 // directly in SyncEngine and LocalStore.
 class TargetIdGenerator {
  public:
-  // Makes Objective-C++ code happy to provide a default ctor.
   TargetIdGenerator() = default;
-
-  TargetIdGenerator(const TargetIdGenerator& value);
 
   /**
    * Creates and returns the TargetIdGenerator for the local store.
@@ -57,9 +54,9 @@ class TargetIdGenerator {
    * @param after An ID to start at. Every call to NextId returns a larger id.
    * @return An instance of TargetIdGenerator.
    */
-  static TargetIdGenerator QueryCacheTargetIdGenerator(model::TargetId after) {
-    TargetIdGenerator generator(TargetIdGeneratorId::QueryCache, after);
-    // Make sure that the next call to `nextId()` returns the first value after
+  static TargetIdGenerator TargetCacheTargetIdGenerator(model::TargetId after) {
+    TargetIdGenerator generator(TargetIdGeneratorId::TargetCache, after);
+    // Make sure that the next call to `NextId()` returns the first value after
     // 'after'.
     generator.NextId();
     return generator;
@@ -84,8 +81,9 @@ class TargetIdGenerator {
  private:
   TargetIdGenerator(TargetIdGeneratorId generator_id, model::TargetId seed);
   void seek(model::TargetId target_id);
-  TargetIdGeneratorId generator_id_;
-  model::TargetId next_id_;
+
+  TargetIdGeneratorId generator_id_ = TargetIdGeneratorId::TargetCache;
+  model::TargetId next_id_ = 0;
 
   static const int kReservedBits = 1;
 };

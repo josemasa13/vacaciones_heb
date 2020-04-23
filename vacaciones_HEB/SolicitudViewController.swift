@@ -17,6 +17,8 @@ class SolicitudViewController: UIViewController {
     
     var userID : String = ""
     var bossID : String = ""
+    var nombreEmpleado : String = ""
+    var nombreJefe : String = ""
     var ref: DocumentReference? = nil
     
 
@@ -38,7 +40,7 @@ class SolicitudViewController: UIViewController {
         dateComponents.year = year
         dateComponents.month = month
         dateComponents.day = day
-        dateComponents.timeZone = TimeZone(abbreviation: "CST") // Japan Standard Time
+        dateComponents.timeZone = TimeZone(abbreviation: "CST") 
         dateComponents.hour = 0
         dateComponents.minute = 0
 
@@ -48,6 +50,26 @@ class SolicitudViewController: UIViewController {
         
         dpFechaInicio.minimumDate = currDateTime
         dpFechaFin.minimumDate = currDateTime
+        
+        db.collection("users").document(bossID).getDocument { (document, error) in
+            if let document = document, document.exists {
+                let jefeAux = document.data()!["name"] as! String
+                self.nombreJefe = jefeAux
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+        
+        
+        db.collection("users").document(userID).getDocument { (document, error) in
+            if let document = document, document.exists {
+                let empleadoAux = document.data()!["name"] as! String
+                self.nombreEmpleado = empleadoAux
+            } else {
+                print("Document does not exist")
+            }
+        }
         
     }
     //init
@@ -61,18 +83,31 @@ class SolicitudViewController: UIViewController {
     @IBAction func enviaDatos(_ sender: UIButton) {
         // Add a second document with a generated ID.
         //validating data
+        print(nombreJefe)
+        print(nombreEmpleado)
         
         ref = db.collection("solicitudes").addDocument(data: [
             "estatus": "pendiente",
             "fechainicio": dpFechaInicio.date,
             "fechafinal": dpFechaFin.date,
             "idempleado": userID,
-            "idjefe": bossID
+            "idjefe": bossID,
+            "nombrejefe": nombreJefe,
+            "nombreempleado":nombreEmpleado,
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added with ID: \(self.ref!.documentID)")
+                // create the alert
+                let alert = UIAlertController(title: "Solicitud Enviada", message: "Tu solicitud se ha enviado a tu suprior", preferredStyle: UIAlertController.Style.alert)
+
+                // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                       // show the alert
+                self.present(alert, animated: true, completion: nil)
+                
             }
         }
     }
