@@ -17,14 +17,15 @@
 #ifndef FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_LOCAL_REMOTE_DOCUMENT_CACHE_H_
 #define FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_LOCAL_REMOTE_DOCUMENT_CACHE_H_
 
-#include "Firestore/core/src/firebase/firestore/core/query.h"
-#include "Firestore/core/src/firebase/firestore/model/document_key.h"
-#include "Firestore/core/src/firebase/firestore/model/document_key_set.h"
-#include "Firestore/core/src/firebase/firestore/model/document_map.h"
-#include "Firestore/core/src/firebase/firestore/model/types.h"
+#include "Firestore/core/src/firebase/firestore/model/model_fwd.h"
 
 namespace firebase {
 namespace firestore {
+
+namespace core {
+class Query;
+}  // namespace core
+
 namespace local {
 
 /**
@@ -37,8 +38,7 @@ namespace local {
  */
 class RemoteDocumentCache {
  public:
-  virtual ~RemoteDocumentCache() {
-  }
+  virtual ~RemoteDocumentCache() = default;
 
   /**
    * Adds or replaces an entry in the cache.
@@ -47,8 +47,10 @@ class RemoteDocumentCache {
    * entry for the key, it will be replaced.
    *
    * @param document A Document or DeletedDocument to put in the cache.
+   * @param read_time The time at which the document was read or committed.
    */
-  virtual void Add(const model::MaybeDocument& document) = 0;
+  virtual void Add(const model::MaybeDocument& document,
+                   const model::SnapshotVersion& read_time) = 0;
 
   /** Removes the cached entry for the given key (no-op if no entry exists). */
   virtual void Remove(const model::DocumentKey& key) = 0;
@@ -82,9 +84,13 @@ class RemoteDocumentCache {
    * Cached DeletedDocument entries have no bearing on query results.
    *
    * @param query The query to match documents against.
+   * @param since_read_time If not set to SnapshotVersion::None(), return only
+   * documents that have been read since this snapshot version (exclusive).
    * @return The set of matching documents.
    */
-  virtual model::DocumentMap GetMatching(const core::Query& query) = 0;
+  virtual model::DocumentMap GetMatching(
+      const core::Query& query,
+      const model::SnapshotVersion& since_read_time) = 0;
 };
 
 }  // namespace local

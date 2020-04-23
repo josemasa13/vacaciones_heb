@@ -24,9 +24,10 @@
 #include "Firestore/core/src/firebase/firestore/immutable/sorted_set.h"
 #include "Firestore/core/src/firebase/firestore/local/document_key_reference.h"
 #include "Firestore/core/src/firebase/firestore/local/mutation_queue.h"
-#include "Firestore/core/src/firebase/firestore/model/document_key.h"
-#include "Firestore/core/src/firebase/firestore/model/document_key_set.h"
+#include "Firestore/core/src/firebase/firestore/model/model_fwd.h"
+#include "Firestore/core/src/firebase/firestore/model/mutation_batch.h"
 #include "Firestore/core/src/firebase/firestore/model/types.h"
+#include "Firestore/core/src/firebase/firestore/nanopb/byte_string.h"
 
 namespace firebase {
 namespace firestore {
@@ -81,7 +82,7 @@ class MemoryMutationQueue : public MutationQueue {
   int64_t CalculateByteSize(const Sizer& sizer);
 
   nanopb::ByteString GetLastStreamToken() override;
-  void SetLastStreamToken(const nanopb::ByteString& token) override;
+  void SetLastStreamToken(nanopb::ByteString token) override;
 
  private:
   using DocumentKeyReferenceSet =

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Google
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,8 +25,7 @@
 #include "Firestore/core/src/firebase/firestore/core/event_listener.h"
 #include "Firestore/core/src/firebase/firestore/model/document.h"
 #include "Firestore/core/src/firebase/firestore/model/document_key.h"
-#include "Firestore/core/src/firebase/firestore/model/field_path.h"
-#include "Firestore/core/src/firebase/firestore/model/field_value.h"
+#include "Firestore/core/src/firebase/firestore/model/model_fwd.h"
 #include "absl/types/optional.h"
 
 namespace firebase {
@@ -38,20 +37,15 @@ class Firestore;
 
 class DocumentSnapshot {
  public:
-  using Listener = std::unique_ptr<core::EventListener<DocumentSnapshot>>;
-
   DocumentSnapshot() = default;
 
-  DocumentSnapshot(std::shared_ptr<Firestore> firestore,
-                   model::DocumentKey document_key,
-                   absl::optional<model::Document> document,
-                   SnapshotMetadata metadata);
+  static DocumentSnapshot FromDocument(std::shared_ptr<Firestore> firestore,
+                                       model::Document document,
+                                       SnapshotMetadata metadata);
 
-  DocumentSnapshot(std::shared_ptr<Firestore> firestore,
-                   model::DocumentKey document_key,
-                   absl::optional<model::Document> document,
-                   bool from_cache,
-                   bool has_pending_writes);
+  static DocumentSnapshot FromNoDocument(std::shared_ptr<Firestore> firestore,
+                                         model::DocumentKey key,
+                                         SnapshotMetadata metadata);
 
   size_t Hash() const;
 
@@ -77,11 +71,24 @@ class DocumentSnapshot {
                          const DocumentSnapshot& rhs);
 
  private:
+  // TODO(b/146372592): Make this public once we can use Abseil across
+  // iOS/public C++ library boundaries.
+  friend class DocumentReference;
+
+  DocumentSnapshot(std::shared_ptr<Firestore> firestore,
+                   model::DocumentKey document_key,
+                   absl::optional<model::Document> document,
+                   SnapshotMetadata metadata);
+
+ private:
   std::shared_ptr<Firestore> firestore_;
   model::DocumentKey internal_key_;
   absl::optional<model::Document> internal_document_;
   SnapshotMetadata metadata_;
 };
+
+using DocumentSnapshotListener =
+    std::unique_ptr<core::EventListener<DocumentSnapshot>>;
 
 inline bool operator!=(const DocumentSnapshot& lhs,
                        const DocumentSnapshot& rhs) {

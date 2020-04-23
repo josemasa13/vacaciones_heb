@@ -17,16 +17,10 @@
 #ifndef FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_REMOTE_WATCH_STREAM_H_
 #define FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_REMOTE_WATCH_STREAM_H_
 
-#if !defined(__OBJC__)
-#error "This header only supports Objective-C++"
-#endif  // !defined(__OBJC__)
-
 #include <memory>
 #include <string>
 
-#include "Firestore/core/src/firebase/firestore/local/query_data.h"
-#include "Firestore/core/src/firebase/firestore/model/snapshot_version.h"
-#include "Firestore/core/src/firebase/firestore/model/types.h"
+#include "Firestore/core/src/firebase/firestore/model/model_fwd.h"
 #include "Firestore/core/src/firebase/firestore/remote/grpc_connection.h"
 #include "Firestore/core/src/firebase/firestore/remote/remote_objc_bridge.h"
 #include "Firestore/core/src/firebase/firestore/remote/stream.h"
@@ -36,19 +30,28 @@
 #include "absl/strings/string_view.h"
 #include "grpcpp/support/byte_buffer.h"
 
-#import "Firestore/Source/Remote/FSTSerializerBeta.h"
-
 namespace firebase {
 namespace firestore {
+
+namespace local {
+class TargetData;
+}  // namespace local
+
 namespace remote {
+
+class Serializer;
 
 /**
  * An interface defining the events that can be emitted by the `WatchStream`.
  */
 class WatchStreamCallback {
  public:
-  /** Called by the `WatchStream` when it is ready to accept outbound request
-   * messages. */
+  virtual ~WatchStreamCallback() = default;
+
+  /**
+   * Called by the `WatchStream` when it is ready to accept outbound request
+   * messages.
+   */
   virtual void OnWatchStreamOpen() = 0;
 
   /**
@@ -82,7 +85,7 @@ class WatchStream : public Stream {
  public:
   WatchStream(const std::shared_ptr<util::AsyncQueue>& async_queue,
               std::shared_ptr<auth::CredentialsProvider> credentials_provider,
-              FSTSerializerBeta* serializer,
+              Serializer serializer,
               GrpcConnection* grpc_connection,
               WatchStreamCallback* callback);
 
@@ -93,7 +96,7 @@ class WatchStream : public Stream {
    * target ID included in `query`.
    */
   virtual /*virtual for tests only*/ void WatchQuery(
-      const local::QueryData& query);
+      const local::TargetData& query);
 
   /**
    * Unregisters interest in the results of the query associated with the given
@@ -115,7 +118,7 @@ class WatchStream : public Stream {
     return "WatchStream";
   }
 
-  bridge::WatchStreamSerializer serializer_bridge_;
+  WatchStreamSerializer watch_serializer_;
   WatchStreamCallback* callback_;
 };
 

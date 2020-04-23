@@ -19,8 +19,7 @@
 
 #include <vector>
 
-#include "Firestore/core/src/firebase/firestore/core/query.h"
-#include "Firestore/core/src/firebase/firestore/core/view_snapshot.h"
+#include "Firestore/core/src/firebase/firestore/core/core_fwd.h"
 #include "Firestore/core/src/firebase/firestore/model/types.h"
 #include "Firestore/core/src/firebase/firestore/util/status_fwd.h"
 
@@ -34,6 +33,8 @@ namespace core {
  */
 class SyncEngineCallback {
  public:
+  virtual ~SyncEngineCallback() = default;
+
   /** Handles a change in online state. */
   virtual void HandleOnlineStateChange(model::OnlineState online_state) = 0;
   /** Handles new view snapshots. */

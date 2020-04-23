@@ -7,6 +7,27 @@
 //
 
 import UIKit
+import Firebase
+import Foundation
+
+class Solicitud{
+    var nombreEmpleado : String
+    var nombreJefe : String
+    var fechaInicio : Timestamp
+    var fechaFin : Timestamp
+    var estatus : String
+    var solicitudID : String
+    
+    init(nombreEmpleado:String, nombreJefe:String, fechaInicio :Timestamp, fechaFin:Timestamp, estatus : String, solicitudID : String){
+        self.nombreEmpleado = nombreEmpleado
+        self.nombreJefe = nombreJefe
+        self.fechaFin = fechaFin
+        self.fechaInicio = fechaInicio
+        self.estatus = estatus
+        self.solicitudID = solicitudID
+    }
+}
+
 class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lbIDSolicitud: UILabel!
@@ -14,11 +35,39 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var lbEmp: UILabel!
     
 }
+
 class AdminTableViewController: UITableViewController {
-    var delegado : SolicitudViewController!
+    let db = Firestore.firestore()
+    
     var userID: String! = nil
+    var estatus : [String] = []
+    var fechasInicio : [Timestamp] = []
+    var fechasFinal : [Timestamp] = []
+    var empleados : [String] = []
+    var solicitudes : [Solicitud] = []
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let solicitudesRef = db.collection("solicitudes")
+        solicitudesRef.whereField("idjefe", isEqualTo: userID!)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID)
+                        
+                        self.solicitudes.append(solicitud)
+                        
+                    }
+                    
+                }
+                self.tableView.reloadData()
+        }
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -36,7 +85,7 @@ class AdminTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return solicitudes.count
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
            return 100
@@ -44,8 +93,12 @@ class AdminTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath) as! CustomTableViewCell
-        cell.lbEmp.text = delegado.userID
-        cell.lbIDSolicitud.text = delegado.ref?.documentID
+        
+        cell.lbEmp?.text = solicitudes[indexPath.row].nombreEmpleado
+        cell.lbEstadoSol?.text = solicitudes[indexPath.row].estatus
+        cell.lbIDSolicitud?.text = solicitudes[indexPath.row].solicitudID
+        
+        
 
         return cell
     }
@@ -91,8 +144,8 @@ class AdminTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vistaDetalle = segue.destination as! DetalleSolViewController
 
-        vistaDetalle.lbIDEmpleado.text = delegado.userID
-        vistaDetalle.lbIDSol.text = delegado.ref?.documentID
+        vistaDetalle.lbIDEmpleado.text = "hola"
+        vistaDetalle.lbIDSol.text = "hola"
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }

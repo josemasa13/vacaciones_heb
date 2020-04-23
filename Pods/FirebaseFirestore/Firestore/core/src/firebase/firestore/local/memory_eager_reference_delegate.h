@@ -44,7 +44,7 @@ class MemoryEagerReferenceDelegate : public ReferenceDelegate {
   void AddReference(const model::DocumentKey& key) override;
   void RemoveReference(const model::DocumentKey& key) override;
   void RemoveMutationReference(const model::DocumentKey& key) override;
-  void RemoveTarget(const QueryData& query_data) override;
+  void RemoveTarget(const TargetData& target_data) override;
 
   void UpdateLimboDocument(const model::DocumentKey& key) override;
 
@@ -60,10 +60,10 @@ class MemoryEagerReferenceDelegate : public ReferenceDelegate {
       orphaned_;
 
   // This instance is owned by MemoryPersistence.
-  MemoryPersistence* persistence_;
+  MemoryPersistence* persistence_ = nullptr;
 
   // The ReferenceSet is owned by LocalStore.
-  ReferenceSet* additional_references_;
+  ReferenceSet* additional_references_ = nullptr;
 };
 
 }  // namespace local
