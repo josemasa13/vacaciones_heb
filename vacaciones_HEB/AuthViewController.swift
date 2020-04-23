@@ -14,6 +14,7 @@ class AuthViewController: UIViewController {
     
     let db = Firestore.firestore()
     var id: String!
+    var bossID:String! = ""
 
     @IBOutlet weak var tfUsuario: UITextField!
     @IBOutlet weak var tfContraseña: UITextField!
@@ -36,6 +37,7 @@ class AuthViewController: UIViewController {
                                 print("ES ADMIN")
                                 self.performSegue(withIdentifier: "admin", sender: nil)
                             }else{
+                                self.bossID = snapshot?.get("reportaA") as! String
                                 print("ES EMPLEADO")
                                 self.performSegue(withIdentifier: "user", sender: nil)
                             }
@@ -60,6 +62,7 @@ class AuthViewController: UIViewController {
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! EmployeeViewController
             vc.userID = self.id
+            vc.bossID = self.bossID
         }
     }
     
