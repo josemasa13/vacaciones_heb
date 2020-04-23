@@ -9,6 +9,6 @@ target 'vacaciones_HEB' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-
-
+  pod 'Firebase/Core'
+  pod 'FirebaseFirestoreSwift'
 end
