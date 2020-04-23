@@ -18,6 +18,7 @@ class SolicitudViewController: UIViewController {
     var userID : String = ""
     var bossID : String = ""
     var ref: DocumentReference? = nil
+    
 
     
     @IBOutlet weak var dpFechaInicio: UIDatePicker!
@@ -49,7 +50,13 @@ class SolicitudViewController: UIViewController {
         dpFechaFin.minimumDate = currDateTime
         
     }
-    
+    //init
+    //inicilizar fecha con doc reference??
+    /*init(userID : String, fechaCreada :String, estado: String){
+        self.userID = userID
+        self.fechaCreada =  fechaCreada
+        self.estado = estado
+    }*/
     
     @IBAction func enviaDatos(_ sender: UIButton) {
         // Add a second document with a generated ID.
