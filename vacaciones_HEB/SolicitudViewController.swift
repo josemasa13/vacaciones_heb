@@ -37,7 +37,7 @@ class SolicitudViewController: UIViewController {
         dateComponents.year = year
         dateComponents.month = month
         dateComponents.day = day
-        dateComponents.timeZone = TimeZone(abbreviation: "CST") // Japan Standard Time
+        dateComponents.timeZone = TimeZone(abbreviation: "CST") 
         dateComponents.hour = 0
         dateComponents.minute = 0
 
@@ -66,6 +66,15 @@ class SolicitudViewController: UIViewController {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added with ID: \(self.ref!.documentID)")
+                // create the alert
+                let alert = UIAlertController(title: "Solicitud Enviada", message: "Tu solicitud se ha enviado a tu suprior", preferredStyle: UIAlertController.Style.alert)
+
+                // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                       // show the alert
+                self.present(alert, animated: true, completion: nil)
+                
             }
         }
     }
