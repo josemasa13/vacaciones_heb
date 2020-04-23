@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3265D1FE244FAD4F004949AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D1FD244FAD4F004949AE /* AppDelegate.swift */; };
 		3265D200244FAD4F004949AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D1FF244FAD4F004949AE /* SceneDelegate.swift */; };
-		3265D202244FAD4F004949AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D201244FAD4F004949AE /* ViewController.swift */; };
+		3265D202244FAD4F004949AE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D201244FAD4F004949AE /* AuthViewController.swift */; };
 		3265D205244FAD4F004949AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3265D203244FAD4F004949AE /* Main.storyboard */; };
 		3265D207244FAD6A004949AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3265D206244FAD6A004949AE /* Assets.xcassets */; };
 		3265D20A244FAD6A004949AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3265D208244FAD6A004949AE /* LaunchScreen.storyboard */; };
@@ -21,7 +21,7 @@
 		3265D1FA244FAD4F004949AE /* vacaciones_HEB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vacaciones_HEB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3265D1FD244FAD4F004949AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3265D1FF244FAD4F004949AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3265D201244FAD4F004949AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3265D201244FAD4F004949AE /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		3265D204244FAD4F004949AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3265D206244FAD6A004949AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3265D209244FAD6A004949AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 			children = (
 				3265D1FD244FAD4F004949AE /* AppDelegate.swift */,
 				3265D1FF244FAD4F004949AE /* SceneDelegate.swift */,
-				3265D201244FAD4F004949AE /* ViewController.swift */,
+				3265D201244FAD4F004949AE /* AuthViewController.swift */,
 				3265D203244FAD4F004949AE /* Main.storyboard */,
 				3265D206244FAD6A004949AE /* Assets.xcassets */,
 				3265D208244FAD6A004949AE /* LaunchScreen.storyboard */,
@@ -83,7 +83,6 @@
 				FB703115E26884E604592302 /* Pods-vacaciones_HEB.debug.xcconfig */,
 				6BBCF35BEE31BF1B1C4BC8C6 /* Pods-vacaciones_HEB.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -211,7 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3265D202244FAD4F004949AE /* ViewController.swift in Sources */,
+				3265D202244FAD4F004949AE /* AuthViewController.swift in Sources */,
 				3265D1FE244FAD4F004949AE /* AppDelegate.swift in Sources */,
 				3265D200244FAD4F004949AE /* SceneDelegate.swift in Sources */,
 			);
@@ -359,6 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T9A3T58L8X;
 				INFOPLIST_FILE = vacaciones_HEB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -377,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T9A3T58L8X;
 				INFOPLIST_FILE = vacaciones_HEB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
