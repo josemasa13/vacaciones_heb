@@ -43,10 +43,10 @@ class SolicitudViewController: UIViewController {
 
         // Create date from components
         let userCalendar = Calendar.current // user calendar
-        let someDateTime = userCalendar.date(from: dateComponents)
+        let currDateTime = userCalendar.date(from: dateComponents)
         
-        dpFechaInicio.minimumDate = someDateTime
-        dpFechaFin.minimumDate = someDateTime
+        dpFechaInicio.minimumDate = currDateTime
+        dpFechaFin.minimumDate = currDateTime
         
     }
     
