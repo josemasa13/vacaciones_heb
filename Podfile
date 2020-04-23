@@ -7,7 +7,6 @@ target 'vacaciones_HEB' do
 
   # Pods for vacaciones_HEB# add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
-
-
+  pod 'Firebase/Auth'
 
 end
