@@ -45,7 +45,7 @@ class AdminTableViewController: UITableViewController {
     var fechasFinal : [Timestamp] = []
     var empleados : [String] = []
     var solicitudes : [Solicitud] = []
-    
+    var selectedIndex : Int!
     
     
     override func viewDidLoad() {
@@ -143,9 +143,10 @@ class AdminTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vistaDetalle = segue.destination as! DetalleSolViewController
-
-        vistaDetalle.lbIDEmpleado.text = "hola"
-        vistaDetalle.lbIDSol.text = "hola"
+       
+        let solicitud = Solicitud(nombreEmpleado: solicitudes[tableView.indexPathForSelectedRow!.row].nombreEmpleado, nombreJefe: solicitudes[tableView.indexPathForSelectedRow!.row].nombreJefe, fechaInicio: solicitudes[tableView.indexPathForSelectedRow!.row].fechaInicio, fechaFin: solicitudes[tableView.indexPathForSelectedRow!.row].fechaFin, estatus:  solicitudes[tableView.indexPathForSelectedRow!.row].estatus, solicitudID: solicitudes[tableView.indexPathForSelectedRow!.row].solicitudID)
+        
+        vistaDetalle.solicitud = solicitud
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
