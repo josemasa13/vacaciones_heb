@@ -59,7 +59,7 @@ class AuthViewController: UIViewController {
             nav.userID = self.id
         }else {
             let nav = segue.destination as! UINavigationController
-            let vc = nav.topViewController as! EmployeeViewController
+            let vc = nav.topViewController as! EmployeeTableViewController
             vc.userID = self.id
             vc.bossID = self.bossID
         }
