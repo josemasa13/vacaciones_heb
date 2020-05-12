@@ -18,6 +18,7 @@ class Solicitud{
     var estatus : String
     var solicitudID : String
     
+    
     init(nombreEmpleado:String, nombreJefe:String, fechaInicio :Timestamp, fechaFin:Timestamp, estatus : String, solicitudID : String){
         self.nombreEmpleado = nombreEmpleado
         self.nombreJefe = nombreJefe
@@ -33,6 +34,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var lbIDSolicitud: UILabel!
     @IBOutlet weak var lbEstadoSol: UILabel!
     @IBOutlet weak var lbEmp: UILabel!
+
     
 }
 
@@ -46,34 +48,45 @@ class AdminTableViewController: UITableViewController {
     var empleados : [String] = []
     var solicitudes : [Solicitud] = []
     var selectedIndex : Int!
-    
+    var solicitudesACargar : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let solicitudesRef = db.collection("solicitudes")
-        solicitudesRef.whereField("idjefe", isEqualTo: userID!)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID)
-                        
-                        self.solicitudes.append(solicitud)
-                        
+        
+        if solicitudesACargar == "modificadas"{
+            
+            solicitudesRef.whereField("idjefe", isEqualTo: userID!).whereField("estatus", isEqualTo: "aprobado").getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID)
+                            
+                            self.solicitudes.append(solicitud)
+                            
+                        }
                     }
-                    
-                }
-                self.tableView.reloadData()
+                    self.tableView.reloadData()
+            }
+        } else{
+        solicitudesRef.whereField("idjefe", isEqualTo: userID!).whereField("estatus", isEqualTo: "pendiente").getDocuments() {
+                (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID)
+                            
+                            self.solicitudes.append(solicitud)
+                            
+                        }
+                    }
+                    self.tableView.reloadData()
+            }
         }
         
         
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
