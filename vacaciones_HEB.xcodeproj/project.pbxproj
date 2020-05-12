@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32500BAE246A44BF006FB710 /* AdminMainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32500BAD246A44BF006FB710 /* AdminMainMenuController.swift */; };
 		3265D1FE244FAD4F004949AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D1FD244FAD4F004949AE /* AppDelegate.swift */; };
 		3265D200244FAD4F004949AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D1FF244FAD4F004949AE /* SceneDelegate.swift */; };
 		3265D202244FAD4F004949AE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D201244FAD4F004949AE /* AuthViewController.swift */; };
@@ -15,6 +16,7 @@
 		3265D20A244FAD6A004949AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3265D208244FAD6A004949AE /* LaunchScreen.storyboard */; };
 		32A21BA22450F38F0089E31A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32A21BA12450F38F0089E31A /* GoogleService-Info.plist */; };
 		32A21BA4245141D90089E31A /* SolicitudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A21BA3245141D90089E31A /* SolicitudViewController.swift */; };
+		5F2EE12F246AFD490021DA3A /* EmployeeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2EE12E246AFD490021DA3A /* EmployeeTableViewController.swift */; };
 		5FD7144B24511A770089A2C3 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7144A24511A770089A2C3 /* AdminTableViewController.swift */; };
 		5FD7144D24511ABF0089A2C3 /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7144C24511ABF0089A2C3 /* EmployeeViewController.swift */; };
 		7BB26ACCA0158606D6F0CE56 /* Pods_vacaciones_HEB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB50F054D2CFFAD1131D35E /* Pods_vacaciones_HEB.framework */; };
@@ -22,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32500BAD246A44BF006FB710 /* AdminMainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMainMenuController.swift; sourceTree = "<group>"; };
 		3265D1FA244FAD4F004949AE /* vacaciones_HEB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vacaciones_HEB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3265D1FD244FAD4F004949AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3265D1FF244FAD4F004949AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +36,7 @@
 		32A21BA12450F38F0089E31A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32A21BA3245141D90089E31A /* SolicitudViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitudViewController.swift; sourceTree = "<group>"; };
 		32C785462452067000C51B52 /* Solicitud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solicitud.swift; sourceTree = "<group>"; };
+		5F2EE12E246AFD490021DA3A /* EmployeeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewController.swift; sourceTree = "<group>"; };
 		5FD7144A24511A770089A2C3 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 		5FD7144C24511ABF0089A2C3 /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
 		6BBCF35BEE31BF1B1C4BC8C6 /* Pods-vacaciones_HEB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vacaciones_HEB.release.xcconfig"; path = "Target Support Files/Pods-vacaciones_HEB/Pods-vacaciones_HEB.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 				3265D1FF244FAD4F004949AE /* SceneDelegate.swift */,
 				3265D201244FAD4F004949AE /* AuthViewController.swift */,
 				3265D203244FAD4F004949AE /* Main.storyboard */,
+				32500BAD246A44BF006FB710 /* AdminMainMenuController.swift */,
+				5F2EE12E246AFD490021DA3A /* EmployeeTableViewController.swift */,
 				32C785462452067000C51B52 /* Solicitud.swift */,
 				8B1547332451D51400D70DDE /* DetalleSolViewController.swift */,
 				32A21BA3245141D90089E31A /* SolicitudViewController.swift */,
@@ -231,6 +237,8 @@
 				3265D1FE244FAD4F004949AE /* AppDelegate.swift in Sources */,
 				3265D200244FAD4F004949AE /* SceneDelegate.swift in Sources */,
 				32A21BA4245141D90089E31A /* SolicitudViewController.swift in Sources */,
+				5F2EE12F246AFD490021DA3A /* EmployeeTableViewController.swift in Sources */,
+				32500BAE246A44BF006FB710 /* AdminMainMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
