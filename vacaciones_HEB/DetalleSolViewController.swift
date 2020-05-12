@@ -10,19 +10,9 @@
 import UIKit
 import Firebase
 import Foundation
-/*let solicitudesRef = db.collection("solicitudes")
-       solicitudesRef.whereField("idjefe", isEqualTo: userID!)
-           .getDocuments() { (querySnapshot, err) in
-               if let err = err {
-                   print("Error getting documents: \(err)")
-               } else {
-                   for document in querySnapshot!.documents {
-                       let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID)
-                       
-                       self.solicitudes.append(solicitud)
-                       
-                   }
-*/
+protocol protocoloStatus {
+    func actualizarEstatus(estat : String) -> Void
+}
 
 class DetalleSolViewController: UIViewController {
 
@@ -39,6 +29,8 @@ class DetalleSolViewController: UIViewController {
     @IBOutlet weak var lbEstadoSol: UILabel!
     
     var solicitud : Solicitud!
+    
+    var delegado : protocoloStatus!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,13 +49,21 @@ class DetalleSolViewController: UIViewController {
     @IBAction func aprobar(_ sender: UIButton) {
         let docRef = db.collection("solicitudes").document(solicitud.solicitudID)
         docRef.updateData(["estatus": "aprobado"])
-        lbEstadoSol.text = "aprobada"
+        var estado = lbEstadoSol.text!
+        estado = "aprobado"
+        delegado.actualizarEstatus(estat: estado)
+        //dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func rechazar(_ sender: UIButton) {
         let docRef = db.collection("solicitudes").document(solicitud.solicitudID)
         docRef.updateData(["estatus": "rechazado"])
-        lbEstadoSol.text = "rechazado"
+        var estado = lbEstadoSol.text!
+        estado = "rechazado"
+        delegado.actualizarEstatus(estat: estado)
+       // dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     

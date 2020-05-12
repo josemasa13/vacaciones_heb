@@ -30,6 +30,7 @@ class Solicitud{
 }
 
 class CustomTableViewCell: UITableViewCell {
+    var solicitudC : Solicitud!
     
     @IBOutlet weak var lbIDSolicitud: UILabel!
     @IBOutlet weak var lbEstadoSol: UILabel!
@@ -38,7 +39,13 @@ class CustomTableViewCell: UITableViewCell {
 
 }
 
-class AdminTableViewController: UITableViewController {
+class AdminTableViewController: UITableViewController, protocoloStatus {
+    func actualizarEstatus(estat: String) {
+        solicitudes[selectedIndex].estatus = estat
+        estatus.append(estat)
+        tableView.reloadData()
+    }
+    
     let db = Firestore.firestore()
     
     var userID: String! = nil
@@ -48,6 +55,8 @@ class AdminTableViewController: UITableViewController {
     var empleados : [String] = []
     var solicitudes : [Solicitud] = []
     var selectedIndex : Int!
+    var estado : String!
+    
     var solicitudesACargar : String!
     
     override func viewDidLoad() {
@@ -115,7 +124,10 @@ class AdminTableViewController: UITableViewController {
 
         return cell
     }
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -160,6 +172,7 @@ class AdminTableViewController: UITableViewController {
         let solicitud = Solicitud(nombreEmpleado: solicitudes[tableView.indexPathForSelectedRow!.row].nombreEmpleado, nombreJefe: solicitudes[tableView.indexPathForSelectedRow!.row].nombreJefe, fechaInicio: solicitudes[tableView.indexPathForSelectedRow!.row].fechaInicio, fechaFin: solicitudes[tableView.indexPathForSelectedRow!.row].fechaFin, estatus:  solicitudes[tableView.indexPathForSelectedRow!.row].estatus, solicitudID: solicitudes[tableView.indexPathForSelectedRow!.row].solicitudID)
         
         vistaDetalle.solicitud = solicitud
+        vistaDetalle.delegado = self
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
