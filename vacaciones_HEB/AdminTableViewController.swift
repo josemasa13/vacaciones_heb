@@ -35,7 +35,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var lbEstadoSol: UILabel!
     @IBOutlet weak var lbEmp: UILabel!
 
-    
+
 }
 
 class AdminTableViewController: UITableViewController {
