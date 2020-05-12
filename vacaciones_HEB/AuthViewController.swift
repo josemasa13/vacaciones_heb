@@ -55,9 +55,8 @@ class AuthViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "admin" {
-            let nav = segue.destination as! UINavigationController
-            let vc = nav.topViewController as! AdminTableViewController
-            vc.userID = self.id
+            let nav = segue.destination as! AdminMainMenuController
+            nav.userID = self.id
         }else {
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! EmployeeViewController

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,8 +57,8 @@
                     <connections>
                         <outlet property="tfContraseña" destination="5bT-qn-4MD" id="2xg-SM-iw0"/>
                         <outlet property="tfUsuario" destination="M5o-qt-2kY" id="MUF-N2-TEL"/>
-                        <segue destination="Eyf-6q-rSo" kind="show" identifier="admin" id="ahF-Bj-PtA"/>
-                        <segue destination="5vm-3l-zbA" kind="showDetail" identifier="user" id="2Jv-BF-2es"/>
+                        <segue destination="5vm-3l-zbA" kind="show" identifier="user" id="2Jv-BF-2es"/>
+                        <segue destination="RWh-l5-KRJ" kind="show" identifier="admin" id="LH7-SR-P2F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -158,6 +158,42 @@
             </objects>
             <point key="canvasLocation" x="2460" y="475.41229385307349"/>
         </scene>
+        <!--Admin Main Menu Controller-->
+        <scene sceneID="Tra-aH-hGs">
+            <objects>
+                <viewController id="RWh-l5-KRJ" customClass="AdminMainMenuController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u2y-pi-sFV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpN-Cy-HqG">
+                                <rect key="frame" x="73" y="182" width="228" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Ver solicitudes pendientes"/>
+                                <connections>
+                                    <segue destination="Eyf-6q-rSo" kind="show" identifier="pendientes" destinationCreationSelector="pendientes" id="dOy-ZO-dnP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgj-xz-dPd">
+                                <rect key="frame" x="18" y="271" width="331" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Ver solicitudes aprobadas/rechazadas"/>
+                                <connections>
+                                    <segue destination="Eyf-6q-rSo" kind="show" identifier="modificadas" destinationCreationSelector="modificadas" id="f6b-eu-F6K"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="fWw-zC-n5I"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="esd-Tb-8Rz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dM7-DH-pSM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="-234"/>
+        </scene>
         <!--Solicitudes-->
         <scene sceneID="L8x-SJ-Zd5">
             <objects>
@@ -235,7 +271,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0A-YV-WiN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1632.8" y="-233.43328335832086"/>
+            <point key="canvasLocation" x="2510" y="-234"/>
         </scene>
         <!--Detalle Sol View Controller-->
         <scene sceneID="CUJ-Lm-Qg2">
@@ -325,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcA-u2-X87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="-233.43328335832086"/>
+            <point key="canvasLocation" x="3337" y="-234"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kxa-j6-GwE">
@@ -344,7 +380,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKR-Sg-fKs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="-233"/>
+            <point key="canvasLocation" x="1678" y="-234"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Alh-nJ-mV9">
@@ -374,4 +410,7 @@
         <image name="botonEnviar" width="980" height="952"/>
         <image name="heb" width="1280" height="427"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="f6b-eu-F6K"/>
+    </inferredMetricsTieBreakers>
 </document>

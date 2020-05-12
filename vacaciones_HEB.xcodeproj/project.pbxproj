@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32500BAE246A44BF006FB710 /* AdminMainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32500BAD246A44BF006FB710 /* AdminMainMenuController.swift */; };
 		3265D1FE244FAD4F004949AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D1FD244FAD4F004949AE /* AppDelegate.swift */; };
 		3265D200244FAD4F004949AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D1FF244FAD4F004949AE /* SceneDelegate.swift */; };
 		3265D202244FAD4F004949AE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265D201244FAD4F004949AE /* AuthViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32500BAD246A44BF006FB710 /* AdminMainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMainMenuController.swift; sourceTree = "<group>"; };
 		3265D1FA244FAD4F004949AE /* vacaciones_HEB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vacaciones_HEB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3265D1FD244FAD4F004949AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3265D1FF244FAD4F004949AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				3265D1FF244FAD4F004949AE /* SceneDelegate.swift */,
 				3265D201244FAD4F004949AE /* AuthViewController.swift */,
 				3265D203244FAD4F004949AE /* Main.storyboard */,
+				32500BAD246A44BF006FB710 /* AdminMainMenuController.swift */,
 				32C785462452067000C51B52 /* Solicitud.swift */,
 				8B1547332451D51400D70DDE /* DetalleSolViewController.swift */,
 				32A21BA3245141D90089E31A /* SolicitudViewController.swift */,
@@ -231,6 +234,7 @@
 				3265D1FE244FAD4F004949AE /* AppDelegate.swift in Sources */,
 				3265D200244FAD4F004949AE /* SceneDelegate.swift in Sources */,
 				32A21BA4245141D90089E31A /* SolicitudViewController.swift in Sources */,
+				32500BAE246A44BF006FB710 /* AdminMainMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
