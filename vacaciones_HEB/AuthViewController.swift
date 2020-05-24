@@ -33,7 +33,7 @@ class AuthViewController: UIViewController {
                     self.id = result.user.uid
                     self.db.collection("users").document(result.user.uid).addSnapshotListener() { (snapshot, error) in
                         if error == nil {
-                            if (snapshot?.get("reportaA") as! String == "" ) {
+                            if (snapshot?.get("esAdmin") as! Bool) {
                                 print("ES ADMIN")
                                 self.performSegue(withIdentifier: "admin", sender: nil)
                             }else{
