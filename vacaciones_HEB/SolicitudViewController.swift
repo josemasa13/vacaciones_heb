@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
+protocol CalendarDelegate {
+    func didUpdatedDates(_ startDate: Date?, _ endDate: Date?,_ dateRanges: String)
+}
 
 class SolicitudViewController: UIViewController {
     
@@ -22,14 +25,33 @@ class SolicitudViewController: UIViewController {
     var ref: DocumentReference? = nil
     
 
+    var startDate: Date? = nil
+    var endDate: Date? = nil
     
-    @IBOutlet weak var dpFechaInicio: UIDatePicker!
-    @IBOutlet weak var dpFechaFin: UIDatePicker!
     @IBOutlet weak var btnEnviar: UIButton!
+    @IBOutlet weak var lbrangeDates: UILabel!
+    @IBOutlet weak var btnFecha: UIButton!
+    
+    var dateSelected = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        btnFecha.titleLabel?.text = "Elegir Fechas"
+        
+        btnFecha.layer.cornerRadius = 15
+        btnFecha.layer.masksToBounds = true
+        btnEnviar.layer.cornerRadius = 15
+        btnEnviar.layer.masksToBounds = true
+        
+        btnEnviar.isEnabled = false
+        btnEnviar.backgroundColor = UIColor(red:204/255, green:204/255, blue:204/255, alpha:1)
+        btnEnviar.setTitleColor(UIColor(red:102/255, green:102/255, blue:102/255, alpha:1), for: .normal)
+        
+        btnFecha.layer.borderWidth = 1
+        btnFecha.layer.borderColor = UIColor.red.cgColor
+        btnFecha.setTitleColor(UIColor.red, for: .normal)
         // Do any additional setup after loading the view.
         let currDate = Date()
         let calendar = Calendar.current
@@ -48,8 +70,6 @@ class SolicitudViewController: UIViewController {
         let userCalendar = Calendar.current // user calendar
         let currDateTime = userCalendar.date(from: dateComponents)
         
-        dpFechaInicio.minimumDate = currDateTime
-        dpFechaFin.minimumDate = currDateTime
         
         db.collection("users").document(bossID).getDocument { (document, error) in
             if let document = document, document.exists {
@@ -88,8 +108,8 @@ class SolicitudViewController: UIViewController {
         
         ref = db.collection("solicitudes").addDocument(data: [
             "estatus": "pendiente",
-            "fechainicio": dpFechaInicio.date,
-            "fechafinal": dpFechaFin.date,
+            "fechainicio": startDate,
+            "fechafinal": endDate,
             "idempleado": userID,
             "idjefe": bossID,
             "nombrejefe": nombreJefe,
@@ -113,16 +133,39 @@ class SolicitudViewController: UIViewController {
         
     }
     
+    func checkSend(){
+        if dateSelected {
+            btnEnviar.isEnabled = true
+            btnEnviar.backgroundColor = UIColor.red
+            btnEnviar.setTitleColor(UIColor.white, for: .normal)
+        }
+    }
+    
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showCalendar" {
+            let vc = segue.destination as! DateSelectionViewController
+            vc.delegate = self
+        }
     }
-    */
+    
 
+}
+
+extension SolicitudViewController: CalendarDelegate {
+    func didUpdatedDates(_ startDate: Date?,_ endDate: Date?,_ dateRanges: String) {
+        self.startDate = startDate!
+        self.endDate = endDate!
+        self.lbrangeDates.text = dateRanges
+        self.dateSelected = true
+        self.btnFecha.titleLabel?.text = "Cambiar fecha"
+        self.checkSend()
+    }
 }
