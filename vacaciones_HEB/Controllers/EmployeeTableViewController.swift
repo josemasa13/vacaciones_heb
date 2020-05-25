@@ -86,6 +86,20 @@ class EmployeeTableViewController: UITableViewController {
     }
     
 
+    @IBAction func cerrarSesion(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        
+        defaults.removeObject(forKey: "name")
+        defaults.removeObject(forKey: "email")
+        defaults.removeObject(forKey: "esAdmin")
+        defaults.removeObject(forKey: "reportaA")
+        defaults.removeObject(forKey: "saldo")
+        defaults.removeObject(forKey: "uid")
+        defaults.synchronize()
+        let nav = UINavigationController()
+        Utility.backToLogin(self)
+
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -19,6 +19,19 @@ class AdminMainMenuController: UIViewController {
     }
     
 
+    @IBAction func logOut(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        
+        defaults.removeObject(forKey: "name")
+        defaults.removeObject(forKey: "email")
+        defaults.removeObject(forKey: "esAdmin")
+        defaults.removeObject(forKey: "reportaA")
+        defaults.removeObject(forKey: "saldo")
+        defaults.removeObject(forKey: "uid")
+        defaults.synchronize()
+        Utility.backToPreviousScreen(self)
+
+    }
     
     // MARK: - Navigation
 
