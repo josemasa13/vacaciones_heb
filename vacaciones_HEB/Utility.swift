@@ -17,4 +17,9 @@ class Utility: NSObject {
             view.dismiss(animated: true, completion: nil)
         }
     }
+    static func backToLogin(_ view: UIViewController){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "login")
+        view.present(vc, animated: false)
+    }
 }

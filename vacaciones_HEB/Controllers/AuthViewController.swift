@@ -15,6 +15,8 @@ class AuthViewController: UIViewController {
     let db = Firestore.firestore()
     var id: String!
     var bossID:String! = ""
+    
+    var savedUser: User!
 
     @IBOutlet weak var tfUsuario: UITextField!
     @IBOutlet weak var tfContraseña: UITextField!
@@ -22,6 +24,50 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        let defaults = UserDefaults.standard
+        print(defaults.value(forKey: "uid"))
+        if let name = defaults.value(forKey: "name") as? String,
+            let email = defaults.value(forKey: "email") as? String,
+            let esAdmin = defaults.value(forKey: "esAdmin") as? Bool,
+            let reportaA = defaults.value(forKey: "reportaA") as? String,
+            let saldo = defaults.value(forKey: "saldo") as? Int,
+            let uid = defaults.value(forKey: "uid") as? String {
+            if esAdmin {
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let vc = storyboard.instantiateViewController(withIdentifier: "admin")
+//                self.present(vc, animated: false)
+                id = uid
+                self.performSegue(withIdentifier: "admin", sender: nil)
+            }else{
+                id = uid
+                bossID = reportaA
+                self.performSegue(withIdentifier: "user", sender: nil)
+            }
+        }
+    }
+    
+    func createUser(uid: String){
+        let defaults = UserDefaults.standard
+        let ref = db.collection("users").document(uid)
+        ref.getDocument {(document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print(document.data()!["name"]!)
+                defaults.set(document.data()!["name"]!, forKey:"name")
+                defaults.set(document.data()!["email"]!, forKey:"email")
+                defaults.set(document.data()!["esAdmin"]!, forKey:"esAdmin")
+                defaults.set(document.data()!["reportaA"]!, forKey:"reportaA")
+                defaults.set(document.data()!["saldo"]!, forKey:"saldo")
+                defaults.set(uid, forKey:"uid")
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
 
     @IBAction func btnEntrar(_ sender: UIButton) {
@@ -33,6 +79,7 @@ class AuthViewController: UIViewController {
                     self.id = result.user.uid
                     self.db.collection("users").document(result.user.uid).addSnapshotListener() { (snapshot, error) in
                         if error == nil {
+                            self.createUser(uid: result.user.uid)
                             if (snapshot?.get("esAdmin") as! Bool) {
                                 print("ES ADMIN")
                                 self.performSegue(withIdentifier: "admin", sender: nil)

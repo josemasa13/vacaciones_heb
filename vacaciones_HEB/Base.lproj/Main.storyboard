@@ -11,7 +11,7 @@
         <!--Auth View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AuthViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="AuthViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,6 +106,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Solicitudes" id="7mE-wq-cfS">
+                        <barButtonItem key="leftBarButtonItem" image="bin.xmark.fill" catalog="system" id="yAS-IL-UVK">
+                            <connections>
+                                <action selector="cerrarSesion:" destination="7nZ-vK-g2O" id="W3r-C4-XKT"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xem-gO-Xvx">
                             <connections>
                                 <segue destination="XlF-cg-bW6" kind="show" id="AHo-vF-Z9Z"/>
@@ -472,9 +477,9 @@
         <!--Admin Main Menu Controller-->
         <scene sceneID="Tra-aH-hGs">
             <objects>
-                <viewController id="RWh-l5-KRJ" customClass="AdminMainMenuController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="admin" modalPresentationStyle="fullScreen" id="RWh-l5-KRJ" customClass="AdminMainMenuController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u2y-pi-sFV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpN-Cy-HqG">
@@ -493,6 +498,14 @@
                                 <state key="normal" title="Ver solicitudes aprobadas/rechazadas"/>
                                 <connections>
                                     <segue destination="Eyf-6q-rSo" kind="show" identifier="modificadas" destinationCreationSelector="modificadas" id="f6b-eu-F6K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIC-lz-AGS">
+                                <rect key="frame" x="16" y="20" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cerrar sesion"/>
+                                <connections>
+                                    <action selector="logOut:" destination="RWh-l5-KRJ" eventType="touchUpInside" id="jMK-NY-Vxx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -696,11 +709,11 @@
         <!--Navigation Controller-->
         <scene sceneID="LaG-TZ-hqU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lmw-j9-um4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="user" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="lmw-j9-um4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="8Cw-iW-ecE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="aAW-NR-plQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -717,6 +730,7 @@
         <segue reference="f6b-eu-F6K"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="bin.xmark.fill" catalog="system" width="128" height="93"/>
         <image name="heb" width="1280" height="427"/>
         <image name="ic_chevron_left" width="24" height="24"/>
         <image name="ic_chevron_right" width="24" height="24"/>
