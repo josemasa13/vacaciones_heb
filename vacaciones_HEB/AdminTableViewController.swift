@@ -17,7 +17,7 @@ class Solicitud{
     var fechaFin : Timestamp
     var estatus : String
     var solicitudID : String
-    
+    var justifRechazo : String
     
     init(nombreEmpleado:String, nombreJefe:String, fechaInicio :Timestamp, fechaFin:Timestamp, estatus : String, solicitudID : String){
         self.nombreEmpleado = nombreEmpleado
@@ -26,6 +26,16 @@ class Solicitud{
         self.fechaInicio = fechaInicio
         self.estatus = estatus
         self.solicitudID = solicitudID
+        self.justifRechazo = ""
+    }
+    init(nombreEmpleado:String, nombreJefe:String, fechaInicio :Timestamp, fechaFin:Timestamp, estatus : String, solicitudID : String, justifRechazo : String){
+        self.nombreEmpleado = nombreEmpleado
+        self.nombreJefe = nombreJefe
+        self.fechaFin = fechaFin
+        self.fechaInicio = fechaInicio
+        self.estatus = estatus
+        self.solicitudID = solicitudID
+        self.justifRechazo = justifRechazo
     }
 }
 
