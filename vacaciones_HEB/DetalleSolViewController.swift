@@ -10,8 +10,35 @@
 import UIKit
 import Firebase
 import Foundation
+import BLTNBoard
 protocol protocoloStatus {
     func actualizarEstatus(estat : String) -> Void
+}
+class JustificacionPageItem: BLTNPageItem {
+
+    var textField: UITextField!
+    
+    override init(title: String) {
+    super.init(title: "Justificacion rechazo")
+     self.descriptionText = "Description"
+     self.isDismissable = true
+    self.presentationHandler = { (_ item: BLTNItem) in
+        self.textField?.becomeFirstResponder() // para que se vea el teclado
+        }
+    }
+    
+    override func makeViewsUnderDescription(with interfaceBuilder: BLTNInterfaceBuilder) -> [UIView]? {
+          var contentViews = [UIView]()
+          
+        let textField = interfaceBuilder.makeTextField(delegate: self as? UITextFieldDelegate)
+              textField.returnKeyType = .done
+              textField.placeholder = "motivo"
+              contentViews.append(textField)
+    
+              self.textField = textField
+        
+          return contentViews
+      }
 }
 
 class DetalleSolViewController: UIViewController {
@@ -40,11 +67,23 @@ class DetalleSolViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-  
-   /* func obtenerSolicitud (id: String){
-    let roofRef = db.database().reference()
-        roofRef.child(solicitud.solicitudID).childByAutoId().setValue(["estatus": "aprobado"])
-    }*/
+  lazy var bulletinJust: BLTNItemManager = {
+      let rootItem: BLTNItem = getBulletinJust()
+      return BLTNItemManager(rootItem: rootItem)}()
+    
+    func getBulletinJust() -> BLTNItem {
+           let justificacion = JustificacionPageItem(title: "Justificacion rachazo")
+           justificacion.descriptionText = "Escribe el motivo de rechazo de dicha solicitud"
+           justificacion.actionButtonTitle = "Enviar"
+            justificacion.actionHandler = { (item: BLTNActionItem) in
+            print("Action button tapped")
+            //envia justificacion
+            self.solicitud.justifRechazo = justificacion.textField.text!
+            print(justificacion.textField.text!)
+            self.updateJustificacion()
+        }
+           return justificacion
+       }
     
     @IBAction func aprobar(_ sender: UIButton) {
         let docRef = db.collection("solicitudes").document(solicitud.solicitudID)
@@ -63,7 +102,13 @@ class DetalleSolViewController: UIViewController {
         estado = "rechazado"
         delegado.actualizarEstatus(estat: estado)
        // dismiss(animated: true, completion: nil)
+        bulletinJust.showBulletin(above: self)
         navigationController?.popViewController(animated: true)
+    }
+    func updateJustificacion() {
+        //referencia doc
+        let ref = db.collection("solicitudes").document(solicitud.solicitudID)
+        ref.updateData(["justificacion": solicitud.justifRechazo])
     }
     
     

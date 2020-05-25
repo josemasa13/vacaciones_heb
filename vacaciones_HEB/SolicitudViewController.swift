@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
-
+import BLTNBoard
 protocol CalendarDelegate {
     func didUpdatedDates(_ startDate: Date?, _ endDate: Date?,_ dateRanges: String)
 }
@@ -23,6 +23,8 @@ class SolicitudViewController: UIViewController {
     var nombreEmpleado : String = ""
     var nombreJefe : String = ""
     var ref: DocumentReference? = nil
+    //descrip rechazo
+    var justificacionRechazo: String = ""
     
 
     var startDate: Date? = nil
@@ -31,6 +33,10 @@ class SolicitudViewController: UIViewController {
     @IBOutlet weak var btnEnviar: UIButton!
     @IBOutlet weak var lbrangeDates: UILabel!
     @IBOutlet weak var btnFecha: UIButton!
+    //pop over
+    lazy var bulletinRecordatorio: BLTNItemManager = {
+        let rootItem: BLTNItem = getBulletinRecordatorio()
+        return BLTNItemManager(rootItem: rootItem)}()
     
     var dateSelected = false
     
@@ -114,6 +120,7 @@ class SolicitudViewController: UIViewController {
             "idjefe": bossID,
             "nombrejefe": nombreJefe,
             "nombreempleado":nombreEmpleado,
+            "justificacion": justificacionRechazo
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -130,7 +137,7 @@ class SolicitudViewController: UIViewController {
                 
             }
         }
-        
+        bulletinRecordatorio.showBulletin(above: self)
     }
     
     func checkSend(){
@@ -140,7 +147,12 @@ class SolicitudViewController: UIViewController {
             btnEnviar.setTitleColor(UIColor.white, for: .normal)
         }
     }
-    
+    //pop over
+    func getBulletinRecordatorio() -> BLTNItem{
+        let recordatorio = BLTNPageItem(title: "Se ha enviado a tu superior")
+        recordatorio.descriptionText = "Recordatorio: Tu nuevo saldo se reflejará cuando se ajuste la nomina"
+        return recordatorio
+    }
     
 
     
