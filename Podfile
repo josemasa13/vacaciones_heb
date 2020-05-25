@@ -12,4 +12,5 @@ target 'vacaciones_HEB' do
   pod 'Firebase/Core'
   pod 'FirebaseFirestoreSwift'
   pod 'JTAppleCalendar', '~> 7.1.6'
+  pod 'BulletinBoard'
 end
