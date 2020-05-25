@@ -75,7 +75,7 @@ class AdminTableViewController: UITableViewController, protocoloStatus {
         
         if solicitudesACargar == "modificadas"{
             
-            solicitudesRef.whereField("idjefe", isEqualTo: userID!).whereField("estatus", isEqualTo: "aprobado").getDocuments() { (querySnapshot, err) in
+            solicitudesRef.whereField("idjefe", isEqualTo: userID!).whereField("estatus", in: ["aprobado", "rechazado"]).getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
