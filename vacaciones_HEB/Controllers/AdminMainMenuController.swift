@@ -10,12 +10,21 @@ import UIKit
 
 class AdminMainMenuController: UIViewController {
     
+    @IBOutlet weak var viewU: UIView!
     var userID : String!
-
+    @IBOutlet weak var btSolicitudPendiente: UIButton!
+    
+    @IBOutlet weak var btSolChecada: UIButton!
+    
+    @IBOutlet weak var lbBienvenido: UILabel!
+    @IBOutlet weak var btCrearSol: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        btSolChecada.layer.cornerRadius = 15.0
+        btSolicitudPendiente.layer.cornerRadius = 15.0
+        btCrearSol.layer.cornerRadius = 15.0
+        lbBienvenido.font = UIFont.boldSystemFont(ofSize: lbBienvenido.font.pointSize)
     }
     
 

@@ -55,6 +55,11 @@ class DetalleSolViewController: UIViewController {
     
     @IBOutlet weak var lbEstadoSol: UILabel!
     
+    @IBOutlet weak var lbDetalle: UILabel!
+    
+    @IBOutlet weak var viewEstado: UIView!
+    
+    @IBOutlet weak var viewInfo: UIView!
     var solicitud : Solicitud!
     
     var delegado : protocoloStatus!
@@ -64,7 +69,12 @@ class DetalleSolViewController: UIViewController {
         lbIDSol.text = solicitud.solicitudID
         lbIDEmpleado.text = solicitud.nombreEmpleado
         lbEstadoSol.text = solicitud.estatus
-        
+        lbEstadoSol.font = UIFont.boldSystemFont(ofSize: lbEstadoSol.font.pointSize)
+        lbDetalle.font = UIFont.boldSystemFont(ofSize: lbDetalle.font.pointSize)
+        lbIDEmpleado.font = UIFont.boldSystemFont(ofSize: lbIDEmpleado.font.pointSize)
+        lbIDSol.font = UIFont.boldSystemFont(ofSize: lbIDSol.font.pointSize)
+        viewEstado.layer.cornerRadius = 15.0
+        viewInfo.layer.cornerRadius = 15.0
         // Do any additional setup after loading the view.
     }
   lazy var bulletinJust: BLTNItemManager = {
@@ -81,6 +91,8 @@ class DetalleSolViewController: UIViewController {
             self.solicitud.justifRechazo = justificacion.textField.text!
             print(justificacion.textField.text!)
             self.updateJustificacion()
+            justificacion.manager?.dismissBulletin(animated:true)
+            self.navigationController?.popViewController(animated: true)
         }
            return justificacion
        }
@@ -103,7 +115,6 @@ class DetalleSolViewController: UIViewController {
         delegado.actualizarEstatus(estat: estado)
        // dismiss(animated: true, completion: nil)
         bulletinJust.showBulletin(above: self)
-        navigationController?.popViewController(animated: true)
     }
     func updateJustificacion() {
         //referencia doc
