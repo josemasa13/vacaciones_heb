@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import BLTNBoard
+import ActivityRings
+
 protocol CalendarDelegate {
     func didUpdatedDates(_ startDate: Date?, _ endDate: Date?,_ dateRanges: String)
 }
@@ -26,6 +28,8 @@ class SolicitudViewController: UIViewController {
     //descrip rechazo
     var justificacionRechazo: String = ""
     
+    var diasRestantes : Double!
+    
 
     var startDate: Date? = nil
     var endDate: Date? = nil
@@ -33,16 +37,34 @@ class SolicitudViewController: UIViewController {
     @IBOutlet weak var btnEnviar: UIButton!
     @IBOutlet weak var lbrangeDates: UILabel!
     @IBOutlet weak var btnFecha: UIButton!
+    @IBOutlet weak var lblSaldo: UILabel!
+    
+    
     //pop over
     lazy var bulletinRecordatorio: BLTNItemManager = {
         let rootItem: BLTNItem = getBulletinRecordatorio()
         return BLTNItemManager(rootItem: rootItem)}()
     
     var dateSelected = false
+    private lazy var activityRingView = ActivityRingView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityRingView.translatesAutoresizingMaskIntoConstraints = false
+        
+        activityRingView.startColor = UIColor.red
+        activityRingView.endColor = UIColor.black
+        
+        activityRingView.ringWidth = 18
+        view.addSubview(activityRingView)
+        NSLayoutConstraint.activate([
+            activityRingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityRingView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -235),
+            activityRingView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.33),
+            activityRingView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.33),
+        ])
         
         btnFecha.titleLabel?.text = "Elegir Fechas"
         
@@ -91,11 +113,16 @@ class SolicitudViewController: UIViewController {
         db.collection("users").document(userID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let empleadoAux = document.data()!["name"] as! String
+                let diasAux = document.data()!["saldo"] as! Double
                 self.nombreEmpleado = empleadoAux
+                self.diasRestantes = diasAux
+                self.activityRingView.animateProgress(to: self.diasRestantes/6.0, withDuration: 3)
+                self.lblSaldo.text = String(Int(diasAux))
             } else {
                 print("Document does not exist")
             }
         }
+        
         
     }
     //init
@@ -113,6 +140,7 @@ class SolicitudViewController: UIViewController {
         print(nombreEmpleado)
         
         ref = db.collection("solicitudes").addDocument(data: [
+            "timestamp": Date(),
             "estatus": "pendiente",
             "fechainicio": startDate,
             "fechafinal": endDate,

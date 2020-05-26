@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-vacaciones_HEB/Pods-vacaciones_HEB-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ActivityRings/ActivityRings.framework
 ${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework
 ${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework
 ${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework
