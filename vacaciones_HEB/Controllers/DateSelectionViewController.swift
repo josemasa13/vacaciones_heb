@@ -84,7 +84,7 @@ class DateSelectionViewController: UIViewController {
         aceptarBtn.layer.cornerRadius = 15
         aceptarBtn.layer.masksToBounds = true
         
-        let date = Date()
+        let date = Date().startOfMonth
         self.calendarView.scrollToDate(date, animateScroll: false)
         
         calendarView.visibleDates() { visibleDates in
@@ -211,9 +211,11 @@ extension DateSelectionViewController: JTAppleCalendarViewDelegate, JTAppleCalen
         cell.dateLabel.text = cellState.text
         self.calendar(calendar, willDisplay: cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         if cellState.dateBelongsTo == .thisMonth {
+            cell.isHidden = false
             cell.isUserInteractionEnabled = true
         } else {
             cell.isUserInteractionEnabled = false
+            cell.isHidden = true
         }
         return cell
     }
@@ -395,5 +397,15 @@ extension UIView {
             mask.path = path.cgPath
             self.layer.mask = mask
         }
+    }
+}
+
+extension Date {
+    var startOfMonth: Date {
+
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents([.year, .month], from: self)
+
+        return  calendar.date(from: components)!
     }
 }

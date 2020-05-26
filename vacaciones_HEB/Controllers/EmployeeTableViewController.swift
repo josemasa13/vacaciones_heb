@@ -26,6 +26,7 @@ class EmployeeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(UINib(nibName: "CeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "newCell")
         getSolicitudes()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -40,6 +41,10 @@ class EmployeeTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -48,23 +53,40 @@ class EmployeeTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        let inicio = solicitudes[indexPath.row].fechaInicio.dateValue()
-        let fin = solicitudes[indexPath.row].fechaFin.dateValue()
-        
-        let formatter = DateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("MM-dd-yyyy")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newCell", for: indexPath) as! CeldaTableViewCell
+        cell.nameLabel.text = solicitudes[indexPath.row].nombreEmpleado
+        cell.statusLabel.text = solicitudes[indexPath.row].estatus
+        cell.dateLabel.text = getDateFormatted(start: solicitudes[indexPath.row].fechaInicio.dateValue(), end: solicitudes[indexPath.row].fechaFin.dateValue())
+        switch solicitudes[indexPath.row].estatus {
+        case "rechazado":
+            cell.statusView.backgroundColor = UIColor.red
+        case "aprobado":
+            cell.statusView.backgroundColor = UIColor.green
+        case "pendiente":
+            cell.statusView.backgroundColor = UIColor.yellow
+        default:
+            cell.statusView.backgroundColor = UIColor.blue
+        }
 
-        let i = formatter.string(from: inicio)
-        let f = formatter.string(from: fin)
-        let description = "\(i) a \(f)"
-        
-        print(description)
-        cell.textLabel?.text = description
-        cell.detailTextLabel?.text = "Estatus: \(solicitudes[indexPath.row].estatus)"
-        // Configure the cell...
-        
         return cell
+    }
+    func getDateFormatted(start: Date, end: Date) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM"
+        if start == end {
+            return formatter.string(from: end) + " 2020"
+        }
+        return formatter.string(from: start) + " al " + formatter.string(from: end) + " 2020"
+    }
+    
+    func getLongAgo(firstDate: Date, secondDate: Date) -> Int{
+        let calendar = Calendar.current
+
+        let date1 = calendar.startOfDay(for: firstDate)
+        let date2 = calendar.startOfDay(for: secondDate)
+
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        return components.day!
     }
     
     
