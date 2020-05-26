@@ -22,6 +22,8 @@
 		5FD7144D24511ABF0089A2C3 /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7144C24511ABF0089A2C3 /* EmployeeViewController.swift */; };
 		5FDFEA3E2479C1AF008F08C0 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDFEA3D2479C1AF008F08C0 /* Utility.swift */; };
 		5FDFEA42247B338E008F08C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDFEA41247B338E008F08C0 /* User.swift */; };
+		5FDFEA45247C808B008F08C0 /* CeldaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDFEA43247C808B008F08C0 /* CeldaTableViewCell.swift */; };
+		5FDFEA46247C808B008F08C0 /* CeldaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDFEA44247C808B008F08C0 /* CeldaTableViewCell.xib */; };
 		7BB26ACCA0158606D6F0CE56 /* Pods_vacaciones_HEB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB50F054D2CFFAD1131D35E /* Pods_vacaciones_HEB.framework */; };
 		8B1547342451D51400D70DDE /* DetalleSolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1547332451D51400D70DDE /* DetalleSolViewController.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +47,8 @@
 		5FD7144C24511ABF0089A2C3 /* EmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
 		5FDFEA3D2479C1AF008F08C0 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		5FDFEA41247B338E008F08C0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5FDFEA43247C808B008F08C0 /* CeldaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CeldaTableViewCell.swift; path = vacaciones_HEB/CeldaTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		5FDFEA44247C808B008F08C0 /* CeldaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CeldaTableViewCell.xib; path = vacaciones_HEB/CeldaTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		6BBCF35BEE31BF1B1C4BC8C6 /* Pods-vacaciones_HEB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vacaciones_HEB.release.xcconfig"; path = "Target Support Files/Pods-vacaciones_HEB/Pods-vacaciones_HEB.release.xcconfig"; sourceTree = "<group>"; };
 		8B1547332451D51400D70DDE /* DetalleSolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleSolViewController.swift; sourceTree = "<group>"; };
 		AFB50F054D2CFFAD1131D35E /* Pods_vacaciones_HEB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vacaciones_HEB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +113,8 @@
 				32A21BA3245141D90089E31A /* SolicitudViewController.swift */,
 				5FD7144C24511ABF0089A2C3 /* EmployeeViewController.swift */,
 				5FD7144A24511A770089A2C3 /* AdminTableViewController.swift */,
+				5FDFEA43247C808B008F08C0 /* CeldaTableViewCell.swift */,
+				5FDFEA44247C808B008F08C0 /* CeldaTableViewCell.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FDFEA46247C808B008F08C0 /* CeldaTableViewCell.xib in Resources */,
 				3265D20A244FAD6A004949AE /* LaunchScreen.storyboard in Resources */,
 				32A21BA22450F38F0089E31A /* GoogleService-Info.plist in Resources */,
 				3265D207244FAD6A004949AE /* Assets.xcassets in Resources */,
@@ -267,6 +274,7 @@
 				32A21BA4245141D90089E31A /* SolicitudViewController.swift in Sources */,
 				5F2EE12F246AFD490021DA3A /* EmployeeTableViewController.swift in Sources */,
 				32500BAE246A44BF006FB710 /* AdminMainMenuController.swift in Sources */,
+				5FDFEA45247C808B008F08C0 /* CeldaTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

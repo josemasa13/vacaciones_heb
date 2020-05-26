@@ -73,6 +73,8 @@ class AdminTableViewController: UITableViewController, protocoloStatus {
         super.viewDidLoad()
         let solicitudesRef = db.collection("solicitudes")
         
+        self.tableView.register(UINib(nibName: "CeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "newCell")
+        
         if solicitudesACargar == "modificadas"{
             
             solicitudesRef.whereField("idjefe", isEqualTo: userID!).whereField("estatus", in: ["aprobado", "rechazado"]).getDocuments() { (querySnapshot, err) in
@@ -120,23 +122,57 @@ class AdminTableViewController: UITableViewController, protocoloStatus {
         return solicitudes.count
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           return 100
+           return 160
        }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath) as! CustomTableViewCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath) as! CustomTableViewCell
+//
+//        cell.lbEmp?.text = solicitudes[indexPath.row].nombreEmpleado
+//        cell.lbEstadoSol?.text = solicitudes[indexPath.row].estatus
+//        cell.lbIDSolicitud?.text = solicitudes[indexPath.row].solicitudID
         
-        cell.lbEmp?.text = solicitudes[indexPath.row].nombreEmpleado
-        cell.lbEstadoSol?.text = solicitudes[indexPath.row].estatus
-        cell.lbIDSolicitud?.text = solicitudes[indexPath.row].solicitudID
-        
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newCell", for: indexPath) as! CeldaTableViewCell
+        cell.nameLabel.text = solicitudes[indexPath.row].nombreEmpleado
+        cell.statusLabel.text = solicitudes[indexPath.row].estatus
+        cell.dateLabel.text = getDateFormatted(start: solicitudes[indexPath.row].fechaInicio.dateValue(), end: solicitudes[indexPath.row].fechaFin.dateValue())
+        switch solicitudes[indexPath.row].estatus {
+        case "rechazado":
+            cell.statusView.backgroundColor = UIColor.red
+        case "aprobado":
+            cell.statusView.backgroundColor = UIColor.green
+        case "pendiente":
+            cell.statusView.backgroundColor = UIColor.yellow
+        default:
+            cell.statusView.backgroundColor = UIColor.blue
+        }
 
         return cell
     }
+    
+    func getDateFormatted(start: Date, end: Date) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM"
+        if start == end {
+            return formatter.string(from: end) + " 2020"
+        }
+        return formatter.string(from: start) + " al " + formatter.string(from: end) + " 2020"
+    }
+    
+    func getLongAgo(firstDate: Date, secondDate: Date) -> Int{
+        let calendar = Calendar.current
+
+        let date1 = calendar.startOfDay(for: firstDate)
+        let date2 = calendar.startOfDay(for: secondDate)
+
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        return components.day!
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("entrooooo")
         selectedIndex = indexPath.row
-        
+        performSegue(withIdentifier: "detalle", sender: self)
     }
     /*
     // Override to support conditional editing of the table view.
