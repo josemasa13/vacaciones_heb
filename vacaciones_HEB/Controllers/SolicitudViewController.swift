@@ -113,6 +113,7 @@ class SolicitudViewController: UIViewController {
         print(nombreEmpleado)
         
         ref = db.collection("solicitudes").addDocument(data: [
+            "timestamp": Date(),
             "estatus": "pendiente",
             "fechainicio": startDate,
             "fechafinal": endDate,
