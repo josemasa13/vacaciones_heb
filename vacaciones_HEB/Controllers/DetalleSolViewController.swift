@@ -57,6 +57,9 @@ class DetalleSolViewController: UIViewController {
     
     var solicitud : Solicitud!
     
+    @IBOutlet weak var viewEstado: UIView!
+    
+    @IBOutlet weak var viewInfo: UIView!
     var delegado : protocoloStatus!
     
     override func viewDidLoad() {
@@ -64,7 +67,8 @@ class DetalleSolViewController: UIViewController {
         lbIDSol.text = solicitud.solicitudID
         lbIDEmpleado.text = solicitud.nombreEmpleado
         lbEstadoSol.text = solicitud.estatus
-        
+        viewEstado.layer.cornerRadius = 15.0
+        viewInfo.layer.cornerRadius = 15.0
         // Do any additional setup after loading the view.
     }
   lazy var bulletinJust: BLTNItemManager = {
@@ -81,6 +85,8 @@ class DetalleSolViewController: UIViewController {
             self.solicitud.justifRechazo = justificacion.textField.text!
             print(justificacion.textField.text!)
             self.updateJustificacion()
+                justificacion.manager?.dismissBulletin(animated: true)
+                self.navigationController?.popViewController(animated: true)
         }
            return justificacion
        }
@@ -103,7 +109,6 @@ class DetalleSolViewController: UIViewController {
         delegado.actualizarEstatus(estat: estado)
        // dismiss(animated: true, completion: nil)
         bulletinJust.showBulletin(above: self)
-        navigationController?.popViewController(animated: true)
     }
     func updateJustificacion() {
         //referencia doc
