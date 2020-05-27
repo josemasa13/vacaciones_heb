@@ -97,7 +97,7 @@ class EmployeeTableViewController: UITableViewController {
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
-                        let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID)
+                        let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID,  justifRechazo: (document.data()["justificacion"] as! String))
                         
                         self.solicitudes.append(solicitud)
                         
@@ -121,6 +121,10 @@ class EmployeeTableViewController: UITableViewController {
         let nav = UINavigationController()
         Utility.backToLogin(self)
 
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detalleEmp", sender: self)
     }
     /*
     // Override to support conditional editing of the table view.
@@ -160,11 +164,17 @@ class EmployeeTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        let nav = segue.destination as! SolicitudViewController
-        
-        
-        nav.userID = self.userID
-        nav.bossID = self.bossID
-        
+        if segue.identifier == "detalleEmp" {
+            let vistaDetalle = segue.destination as! DetalleEmpleadoViewController
+            
+             let solicitud = Solicitud(nombreEmpleado: solicitudes[tableView.indexPathForSelectedRow!.row].nombreEmpleado, nombreJefe: solicitudes[tableView.indexPathForSelectedRow!.row].nombreJefe, fechaInicio: solicitudes[tableView.indexPathForSelectedRow!.row].fechaInicio, fechaFin: solicitudes[tableView.indexPathForSelectedRow!.row].fechaFin, estatus:  solicitudes[tableView.indexPathForSelectedRow!.row].estatus, solicitudID: solicitudes[tableView.indexPathForSelectedRow!.row].solicitudID, justifRechazo: solicitudes[tableView.indexPathForSelectedRow!.row].justifRechazo)
+             
+             vistaDetalle.solicitud = solicitud
+        }else{
+            let nav = segue.destination as! SolicitudViewController
+            
+            nav.userID = self.userID
+            nav.bossID = self.bossID
+        }
     }
 }
