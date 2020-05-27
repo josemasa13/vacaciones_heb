@@ -106,7 +106,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Solicitudes" id="7mE-wq-cfS">
-                        <barButtonItem key="leftBarButtonItem" image="bin.xmark.fill" catalog="system" id="yAS-IL-UVK">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="square.and.arrow.up.on.square.fill" catalog="system" style="plain" id="yAS-IL-UVK">
                             <connections>
                                 <action selector="cerrarSesion:" destination="7nZ-vK-g2O" id="W3r-C4-XKT"/>
                             </connections>
@@ -117,6 +117,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="lTX-tA-MPU" kind="presentation" identifier="detalleEmp" id="f8k-5s-4TV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIN-qH-tz2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -261,6 +264,218 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZFq-sj-DL4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2493.5999999999999" y="511.39430284857576"/>
+        </scene>
+        <!--Detalle Empleado View Controller-->
+        <scene sceneID="EQi-of-Rap">
+            <objects>
+                <viewController id="lTX-tA-MPU" customClass="DetalleEmpleadoViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mww-56-cVo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Zdd-2y-GDG">
+                                <rect key="frame" x="30" y="88" width="354" height="724"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMb-WK-mXt">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="132"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha Creada" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2z-Ef-rt1">
+                                                <rect key="frame" x="10" y="10" width="137.33333333333334" height="20"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha Creada" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkX-Rl-Jbe">
+                                                <rect key="frame" x="10" y="93" width="178.66666666666666" height="24"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ZkX-Rl-Jbe" secondAttribute="bottom" constant="15" id="KUO-2q-ANf"/>
+                                            <constraint firstItem="ZkX-Rl-Jbe" firstAttribute="leading" secondItem="LMb-WK-mXt" secondAttribute="leading" constant="10" id="YqL-z1-9g9"/>
+                                            <constraint firstItem="o2z-Ef-rt1" firstAttribute="leading" secondItem="LMb-WK-mXt" secondAttribute="leading" constant="10" id="hZ9-qR-bXm"/>
+                                            <constraint firstItem="o2z-Ef-rt1" firstAttribute="top" secondItem="LMb-WK-mXt" secondAttribute="top" constant="10" id="qfq-NB-xJx"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pBf-ge-hq0">
+                                        <rect key="frame" x="0.0" y="148" width="354" height="132"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jl-yu-dg3">
+                                                <rect key="frame" x="0.0" y="0.0" width="172" height="132"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inicio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJU-Uu-ad1">
+                                                        <rect key="frame" x="10" y="10" width="51" height="20"/>
+                                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fecha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cik-OT-sSo">
+                                                        <rect key="frame" x="10" y="98" width="58" height="19"/>
+                                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="19"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="nJU-Uu-ad1" firstAttribute="leading" secondItem="7jl-yu-dg3" secondAttribute="leading" constant="10" id="JvX-ph-osR"/>
+                                                    <constraint firstItem="cik-OT-sSo" firstAttribute="leading" secondItem="7jl-yu-dg3" secondAttribute="leading" constant="10" id="TzR-XI-qtp"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cik-OT-sSo" secondAttribute="bottom" constant="15" id="bGq-Sx-1z9"/>
+                                                    <constraint firstItem="nJU-Uu-ad1" firstAttribute="top" secondItem="7jl-yu-dg3" secondAttribute="top" constant="10" id="jS2-IG-Nrj"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CVL-dB-6Q2">
+                                                <rect key="frame" x="182" y="0.0" width="172" height="132"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsN-hf-dMZ">
+                                                        <rect key="frame" x="9.9999999999999982" y="10" width="29.333333333333329" height="20"/>
+                                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fecha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diO-34-2NJ">
+                                                        <rect key="frame" x="10" y="98" width="58" height="19"/>
+                                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="19"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="diO-34-2NJ" secondAttribute="bottom" constant="15" id="EfP-s4-wKf"/>
+                                                    <constraint firstItem="IsN-hf-dMZ" firstAttribute="top" secondItem="CVL-dB-6Q2" secondAttribute="top" constant="10" id="F6W-Nx-O3a"/>
+                                                    <constraint firstItem="diO-34-2NJ" firstAttribute="leading" secondItem="CVL-dB-6Q2" secondAttribute="leading" constant="10" id="HUJ-8P-kKI"/>
+                                                    <constraint firstItem="IsN-hf-dMZ" firstAttribute="leading" secondItem="CVL-dB-6Q2" secondAttribute="leading" constant="10" id="k6A-SU-g7L"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="CVL-dB-6Q2" secondAttribute="trailing" id="ghk-jI-N6U"/>
+                                            <constraint firstItem="7jl-yu-dg3" firstAttribute="width" secondItem="CVL-dB-6Q2" secondAttribute="width" multiplier="1:1" id="gmH-A2-t3M"/>
+                                            <constraint firstItem="7jl-yu-dg3" firstAttribute="leading" secondItem="pBf-ge-hq0" secondAttribute="leading" id="rne-M4-vBO"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCp-we-9wL">
+                                        <rect key="frame" x="0.0" y="296" width="354" height="132"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre jefe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LX-2Z-6qq">
+                                                <rect key="frame" x="10" y="10" width="124" height="20"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha Creada" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVJ-tb-pyz">
+                                                <rect key="frame" x="10" y="93" width="178.66666666666666" height="24"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="xVJ-tb-pyz" secondAttribute="bottom" constant="15" id="7gs-GF-xKK"/>
+                                            <constraint firstItem="8LX-2Z-6qq" firstAttribute="leading" secondItem="mCp-we-9wL" secondAttribute="leading" constant="10" id="WiZ-EB-Wk7"/>
+                                            <constraint firstItem="xVJ-tb-pyz" firstAttribute="leading" secondItem="mCp-we-9wL" secondAttribute="leading" constant="10" id="vdW-9h-crF"/>
+                                            <constraint firstItem="8LX-2Z-6qq" firstAttribute="top" secondItem="mCp-we-9wL" secondAttribute="top" constant="10" id="zsK-TL-fpR"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ium-Nx-c5Y">
+                                        <rect key="frame" x="0.0" y="444" width="354" height="132"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estatus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrC-IX-cAZ">
+                                                <rect key="frame" x="10" y="10" width="74" height="20"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pendiente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9H1-wL-fZp">
+                                                <rect key="frame" x="10" y="93" width="129.33333333333334" height="24"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="9H1-wL-fZp" firstAttribute="leading" secondItem="ium-Nx-c5Y" secondAttribute="leading" constant="10" id="1Sv-91-PIW"/>
+                                            <constraint firstItem="LrC-IX-cAZ" firstAttribute="top" secondItem="ium-Nx-c5Y" secondAttribute="top" constant="10" id="6Dh-TO-giW"/>
+                                            <constraint firstAttribute="bottom" secondItem="9H1-wL-fZp" secondAttribute="bottom" constant="15" id="Yod-0H-f5c"/>
+                                            <constraint firstItem="LrC-IX-cAZ" firstAttribute="leading" secondItem="ium-Nx-c5Y" secondAttribute="leading" constant="10" id="f3j-vR-GqE"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRY-gs-7MP">
+                                        <rect key="frame" x="0.0" y="592" width="354" height="132"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Justificacion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGa-nN-KCI">
+                                                <rect key="frame" x="10.000000000000007" y="10" width="122.66666666666669" height="20"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mucho trabajo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVf-pw-Iac">
+                                                <rect key="frame" x="10" y="93" width="188.33333333333334" height="24"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="sVf-pw-Iac" firstAttribute="leading" secondItem="PRY-gs-7MP" secondAttribute="leading" constant="10" id="7uX-5W-aIT"/>
+                                            <constraint firstAttribute="bottom" secondItem="sVf-pw-Iac" secondAttribute="bottom" constant="15" id="MKe-sv-ewo"/>
+                                            <constraint firstItem="fGa-nN-KCI" firstAttribute="top" secondItem="PRY-gs-7MP" secondAttribute="top" constant="10" id="WMS-E1-FkJ"/>
+                                            <constraint firstItem="fGa-nN-KCI" firstAttribute="leading" secondItem="PRY-gs-7MP" secondAttribute="leading" constant="10" id="anq-yY-cP3"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="mCp-we-9wL" firstAttribute="height" secondItem="LMb-WK-mXt" secondAttribute="height" id="71N-Xn-Bfe"/>
+                                    <constraint firstItem="PRY-gs-7MP" firstAttribute="height" secondItem="LMb-WK-mXt" secondAttribute="height" id="JsI-KW-BAi"/>
+                                    <constraint firstItem="ium-Nx-c5Y" firstAttribute="height" secondItem="LMb-WK-mXt" secondAttribute="height" id="L57-ut-Ew0"/>
+                                    <constraint firstItem="pBf-ge-hq0" firstAttribute="height" secondItem="LMb-WK-mXt" secondAttribute="height" id="kak-2m-j3X"/>
+                                </constraints>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uxj-XN-oyZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                                <items>
+                                    <navigationItem title="Detalles Solicitud" id="Lc7-R0-cTP"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8901960784313725" green="0.89411764705882346" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uxj-XN-oyZ" firstAttribute="trailing" secondItem="Sfv-gw-4Sa" secondAttribute="trailing" id="2Wh-Pf-aT4"/>
+                            <constraint firstItem="uxj-XN-oyZ" firstAttribute="top" secondItem="Sfv-gw-4Sa" secondAttribute="top" id="7JS-6R-dyV"/>
+                            <constraint firstItem="uxj-XN-oyZ" firstAttribute="leading" secondItem="Sfv-gw-4Sa" secondAttribute="leading" id="GAB-pv-Tl0"/>
+                            <constraint firstItem="Zdd-2y-GDG" firstAttribute="leading" secondItem="Sfv-gw-4Sa" secondAttribute="leading" constant="30" id="SEa-8T-3wD"/>
+                            <constraint firstItem="Sfv-gw-4Sa" firstAttribute="trailing" secondItem="Zdd-2y-GDG" secondAttribute="trailing" constant="30" id="UPw-Ab-Hou"/>
+                            <constraint firstItem="Zdd-2y-GDG" firstAttribute="top" secondItem="uxj-XN-oyZ" secondAttribute="bottom" constant="30" id="dfj-N6-KYY"/>
+                            <constraint firstItem="Zdd-2y-GDG" firstAttribute="centerX" secondItem="Mww-56-cVo" secondAttribute="centerX" id="oZ8-1J-a5H"/>
+                            <constraint firstAttribute="bottom" secondItem="Zdd-2y-GDG" secondAttribute="bottom" constant="30" id="zPL-qn-Azs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Sfv-gw-4Sa"/>
+                    </view>
+                    <connections>
+                        <outlet property="lbEstatus" destination="9H1-wL-fZp" id="xeO-4P-Sqa"/>
+                        <outlet property="lbFechaCreada" destination="ZkX-Rl-Jbe" id="55s-i8-Ajv"/>
+                        <outlet property="lbFechaFin" destination="diO-34-2NJ" id="aDT-U6-E96"/>
+                        <outlet property="lbFechaInicio" destination="cik-OT-sSo" id="hcU-ii-MGm"/>
+                        <outlet property="lbJustificacion" destination="sVf-pw-Iac" id="6Xt-fM-A5o"/>
+                        <outlet property="lbNombreJefe" destination="xVJ-tb-pyz" id="fYW-NG-EPw"/>
+                        <outlet property="viewEstatus" destination="ium-Nx-c5Y" id="iqW-bO-Qhe"/>
+                        <outlet property="viewFechaCreada" destination="LMb-WK-mXt" id="BHV-So-PYQ"/>
+                        <outlet property="viewFin" destination="CVL-dB-6Q2" id="2mO-Y2-gzO"/>
+                        <outlet property="viewInicio" destination="7jl-yu-dg3" id="DbW-Z8-ccb"/>
+                        <outlet property="viewJefe" destination="mCp-we-9wL" id="g0b-bv-9md"/>
+                        <outlet property="viewJustificacion" destination="PRY-gs-7MP" id="97S-pw-A2R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wVK-oI-zli" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1677" y="1254"/>
         </scene>
         <!--Date Selection View Controller-->
         <scene sceneID="846-aT-3m2">
@@ -885,6 +1100,9 @@
         </scene>
     </scenes>
     <resources>
+
+        <image name="bin.xmark.fill" catalog="system" width="128" height="93"/>
+
         <image name="aceptada" width="598" height="592"/>
         <image name="bin.xmark.fill" catalog="system" width="64" height="46"/>
         <image name="cancel" width="260" height="260"/>
@@ -892,6 +1110,7 @@
         <image name="ic_chevron_left" width="24" height="24"/>
         <image name="ic_chevron_right" width="24" height="24"/>
         <image name="ic_close" width="24" height="24"/>
+        <image name="square.and.arrow.up.on.square.fill" catalog="system" width="117" height="128"/>
         <image name="key-icon" width="256" height="256"/>
         <image name="user-id-icon" width="512" height="512"/>
     </resources>
