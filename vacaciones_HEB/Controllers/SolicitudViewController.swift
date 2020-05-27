@@ -28,7 +28,7 @@ class SolicitudViewController: UIViewController {
     //descrip rechazo
     var justificacionRechazo: String = ""
     
-    var diasRestantes : Double!
+    var diasRestantes : Int!
     
 
     var startDate: Date? = nil
@@ -50,7 +50,8 @@ class SolicitudViewController: UIViewController {
     //pop over
     lazy var bulletinRecordatorio: BLTNItemManager = {
         let rootItem: BLTNItem = getBulletinRecordatorio()
-        return BLTNItemManager(rootItem: rootItem)}()
+        return BLTNItemManager(rootItem: rootItem)
+    }()
     
     var dateSelected = false
     private lazy var activityRingView = ActivityRingView()
@@ -66,6 +67,8 @@ class SolicitudViewController: UIViewController {
         activityRingView.startColor = UIColor.systemGreen
         activityRingView.endColor = UIColor.systemGray
         
+        let w = lblSaldo.bounds.height / 2
+        
         activityRingView.ringWidth = 25
         view.addSubview(activityRingView)
         NSLayoutConstraint.activate([
@@ -74,7 +77,7 @@ class SolicitudViewController: UIViewController {
             activityRingView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
             activityRingView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.50),
             lblSaldo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lblSaldo.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -160),
+            lblSaldo.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -160 - w),
         ])
         
         btnFecha.titleLabel?.text = "Elegir Fechas"
@@ -124,10 +127,10 @@ class SolicitudViewController: UIViewController {
         db.collection("users").document(userID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let empleadoAux = document.data()!["name"] as! String
-                let diasAux = document.data()!["saldo"] as! Double
+                let diasAux = document.data()!["saldo"] as! Int
                 self.nombreEmpleado = empleadoAux
                 self.diasRestantes = diasAux
-                self.activityRingView.animateProgress(to: self.diasRestantes/20.0, withDuration: 3)
+                self.activityRingView.animateProgress(to: Double(self.diasRestantes)/10.0, withDuration: 3)
                 self.lblSaldo.text = String(Int(diasAux))
             } else {
                 print("Document does not exist")
@@ -189,8 +192,17 @@ class SolicitudViewController: UIViewController {
     }
     //pop over
     func getBulletinRecordatorio() -> BLTNItem{
-        let recordatorio = BLTNPageItem(title: "Se ha enviado a tu superior")
+        let recordatorio = BLTNPageItem(title: "Se ha enviado la solicitud")
         recordatorio.descriptionText = "Recordatorio: Tu nuevo saldo se reflejará cuando se ajuste la nomina"
+        recordatorio.actionButtonTitle = "De acuerdo"
+        recordatorio.image = UIImage(named: "IntroCompletion")?.withTintColor(.systemGreen)
+        recordatorio.appearance.actionButtonColor = .systemGreen
+        recordatorio.actionHandler = { (item: BLTNActionItem) in
+            recordatorio.manager?.dismissBulletin(animated: true)
+            Utility.backToPreviousScreen(self)
+        }
+        recordatorio.requiresCloseButton = false
+        recordatorio.isDismissable = false
         return recordatorio
     }
     
@@ -205,6 +217,7 @@ class SolicitudViewController: UIViewController {
         if segue.identifier == "showCalendar" {
             let vc = segue.destination as! DateSelectionViewController
             vc.delegate = self
+            vc.saldo = self.diasRestantes
         }
     }
     func getDateFormatted(date: Date) -> String{

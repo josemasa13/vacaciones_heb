@@ -8,6 +8,7 @@
 
 import UIKit
 import JTAppleCalendar
+import BLTNBoard
 
 class DateSelectionViewController: UIViewController {
 
@@ -19,6 +20,8 @@ class DateSelectionViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var selectedDates: UILabel!
     @IBOutlet weak var aceptarBtn: UIButton!
+    
+    var saldo: Int! = nil
     
     let formatter = DateFormatter()
     var datesToDeselect: [Date]?
@@ -50,8 +53,35 @@ class DateSelectionViewController: UIViewController {
     }
     
     @IBAction func aceptarBtn(_ sender: Any) {
-        self.delegate?.didUpdatedDates(startDate, endDate, self.selectedDates.text ?? "All time")
-        Utility.backToPreviousScreen(self)
+        if dateIsValid() && saldo! >= calendarView.selectedDates.count {
+            self.delegate?.didUpdatedDates(startDate, endDate, self.selectedDates.text ?? "All time")
+            Utility.backToPreviousScreen(self)
+        }else{
+            bulletinAviso.showBulletin(above: self)
+        }
+    }
+    
+    lazy var bulletinAviso: BLTNItemManager = {
+        let rootItem: BLTNItem = getBulletinAviso()
+        return BLTNItemManager(rootItem: rootItem)
+    }()
+    
+    func getBulletinAviso() -> BLTNItem{
+        let recordatorio = BLTNPageItem(title: "Error")
+        recordatorio.descriptionText = "Asegurate de escoger una fecha válida y que no se pase de tu saldo disponible: \(saldo!) dias"
+        recordatorio.actionButtonTitle = "De acuerdo"
+        recordatorio.actionHandler = { (item: BLTNActionItem) in
+            recordatorio.manager?.dismissBulletin(animated: true)
+        }
+        recordatorio.requiresCloseButton = false
+        return recordatorio
+    }
+    
+    func dateIsValid() -> Bool{
+        if startDate < Date() || endDate < Date() {
+            return false
+        }
+        return true
     }
     
     func initData(_ dates: [Date]) {

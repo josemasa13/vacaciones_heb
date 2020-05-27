@@ -20,11 +20,13 @@ class AuthViewController: UIViewController {
 
     @IBOutlet weak var tfUsuario: UITextField!
     @IBOutlet weak var tfContraseña: UITextField!
+    @IBOutlet weak var entrarBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        entrarBtn.layer.cornerRadius = 15
+        entrarBtn.clipsToBounds = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -107,6 +109,7 @@ class AuthViewController: UIViewController {
         }else {
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! EmployeeTableViewController
+            nav.modalPresentationStyle = .fullScreen
             vc.userID = self.id
             vc.bossID = self.bossID
         }

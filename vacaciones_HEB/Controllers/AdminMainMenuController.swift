@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
-
+import BLTNBoard
 let db = Firestore.firestore()
 
 func getBoss(userID:String) -> String{
@@ -71,17 +71,32 @@ class AdminMainMenuController: UIViewController {
     
 
     @IBAction func logOut(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        
-        defaults.removeObject(forKey: "name")
-        defaults.removeObject(forKey: "email")
-        defaults.removeObject(forKey: "esAdmin")
-        defaults.removeObject(forKey: "reportaA")
-        defaults.removeObject(forKey: "saldo")
-        defaults.removeObject(forKey: "uid")
-        defaults.synchronize()
-        Utility.backToPreviousScreen(self)
-
+        bulletinCerrar.showBulletin(above: self)
+    }
+    
+    lazy var bulletinCerrar: BLTNItemManager = {
+      let rootItem: BLTNItem = getBulletinCerrar()
+      return BLTNItemManager(rootItem: rootItem)
+    }()
+    
+    func getBulletinCerrar() -> BLTNItem {
+        let blt = BLTNPageItem(title: "¿Cerrar Sesión?")
+        blt.actionButtonTitle = "Salir"
+        blt.appearance.actionButtonColor = UIColor.red
+        blt.actionHandler = { (item: BLTNActionItem) in
+            let defaults = UserDefaults.standard
+            
+            defaults.removeObject(forKey: "name")
+            defaults.removeObject(forKey: "email")
+            defaults.removeObject(forKey: "esAdmin")
+            defaults.removeObject(forKey: "reportaA")
+            defaults.removeObject(forKey: "saldo")
+            defaults.removeObject(forKey: "uid")
+            defaults.synchronize()
+            blt.manager?.dismissBulletin()
+            Utility.backToPreviousScreen(self)
+        }
+        return blt
     }
     
     // MARK: - Navigation
@@ -99,10 +114,11 @@ class AdminMainMenuController: UIViewController {
             solicitudVC.userID = self.userID
             solicitudVC.bossID = self.bossID
         } else{
-            let solicitudesVC = segue.destination as! EmployeeTableViewController
+            let nav =  segue.destination as! UINavigationController
+            let solicitudesVC = nav.topViewController as! EmployeeTableViewController
+            solicitudesVC.isModal = true
             solicitudesVC.bossID = self.bossID
             solicitudesVC.userID = self.userID
-            
         }
     }
 }

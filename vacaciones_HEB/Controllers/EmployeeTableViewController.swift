@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Foundation
+import BLTNBoard
 
 class EmployeeTableViewController: UITableViewController {
     
@@ -24,10 +25,19 @@ class EmployeeTableViewController: UITableViewController {
     var selectedIndex : Int!
     var solicitudesACargar : String!
 
+    @IBOutlet weak var logoutBtn: UIBarButtonItem!
+    
+    var isModal = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "CeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "newCell")
+      
         getSolicitudes()
+        if isModal {
+            logoutBtn.isEnabled = false
+            logoutBtn.tintColor = UIColor.clear
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -109,18 +119,32 @@ class EmployeeTableViewController: UITableViewController {
     
 
     @IBAction func cerrarSesion(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        
-        defaults.removeObject(forKey: "name")
-        defaults.removeObject(forKey: "email")
-        defaults.removeObject(forKey: "esAdmin")
-        defaults.removeObject(forKey: "reportaA")
-        defaults.removeObject(forKey: "saldo")
-        defaults.removeObject(forKey: "uid")
-        defaults.synchronize()
-        let nav = UINavigationController()
-        Utility.backToLogin(self)
-
+        bulletinCerrar.showBulletin(above: self)
+    }
+    
+    lazy var bulletinCerrar: BLTNItemManager = {
+      let rootItem: BLTNItem = getBulletinCerrar()
+      return BLTNItemManager(rootItem: rootItem)
+    }()
+    
+    func getBulletinCerrar() -> BLTNItem {
+        let blt = BLTNPageItem(title: "¿Cerrar Sesión?")
+        blt.actionButtonTitle = "Salir"
+        blt.appearance.actionButtonColor = UIColor.red
+        blt.actionHandler = { (item: BLTNActionItem) in
+            let defaults = UserDefaults.standard
+            
+            defaults.removeObject(forKey: "name")
+            defaults.removeObject(forKey: "email")
+            defaults.removeObject(forKey: "esAdmin")
+            defaults.removeObject(forKey: "reportaA")
+            defaults.removeObject(forKey: "saldo")
+            defaults.removeObject(forKey: "uid")
+            defaults.synchronize()
+            blt.manager?.dismissBulletin()
+            Utility.backToLogin(self)
+        }
+        return blt
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

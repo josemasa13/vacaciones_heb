@@ -88,6 +88,8 @@ class DetalleSolViewController: UIViewController {
                 justificacion.manager?.dismissBulletin(animated: true)
                 self.navigationController?.popViewController(animated: true)
         }
+        justificacion.isDismissable = false
+        justificacion.requiresCloseButton = false
            return justificacion
        }
     
