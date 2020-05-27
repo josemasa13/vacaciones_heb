@@ -7,10 +7,30 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+
+let db = Firestore.firestore()
+
+func getBoss(userID:String) -> String{
+
+    var jefe : String = ""
+    db.collection("users").document(userID).getDocument { (document, error) in
+        if let document = document, document.exists {
+            jefe = document.data()!["reportaA"] as! String
+
+        } else {
+            print("Document does not exist")
+        }
+    }
+    return jefe
+}
 
 class AdminMainMenuController: UIViewController {
     
     var userID : String!
+    
+    var bossID : String!
 
     @IBOutlet weak var btnCerrarS: UIButton!
     
@@ -25,11 +45,28 @@ class AdminMainMenuController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        btnCerrarS.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        btVerSolicitud.layer.cornerRadius = 15.0
-        verMiHistorial.layer.cornerRadius = 15.0
-        btCrearSolicitud.layer.cornerRadius = 15.0
-        btHistorialEmp.layer.cornerRadius = 15.0
+    db.collection("users").document(self.userID).getDocument { (document, error) in
+        
+            if let document = document, document.exists {
+                self.bossID = document.data()!["reportaA"] as? String
+
+            } else {
+                print("Document does not exist")
+            }
+        }
+
+        
+        if self.bossID == "" {
+            self.btCrearSolicitud.isHidden = true
+            
+            self.verMiHistorial.isHidden = true
+        }
+        
+            self.btnCerrarS.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            self.btVerSolicitud.layer.cornerRadius = 15.0
+            self.verMiHistorial.layer.cornerRadius = 15.0
+            self.btCrearSolicitud.layer.cornerRadius = 15.0
+            self.btHistorialEmp.layer.cornerRadius = 15.0
     }
     
 
@@ -51,20 +88,21 @@ class AdminMainMenuController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let nav = segue.destination as! UINavigationController
-        let vc = nav.topViewController as! AdminTableViewController
-
-        vc.userID = self.userID
-        
-        if segue.identifier == "modificadas"{
-            vc.solicitudesACargar = "modificadas"
+        if segue.identifier == "modificadas" || segue.identifier == "pendientes"{
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.topViewController as! AdminTableViewController
+            vc.userID = self.userID
+            let destination = segue.identifier == "modificadas" ? "modificadas" : "pendientes"
+            vc.solicitudesACargar = destination
+        } else if segue.identifier == "crearSolicitud"{
+            let solicitudVC = segue.destination as! SolicitudViewController
+            solicitudVC.userID = self.userID
+            solicitudVC.bossID = self.bossID
         } else{
-            vc.solicitudesACargar = "pendientes"
+            let solicitudesVC = segue.destination as! EmployeeTableViewController
+            solicitudesVC.bossID = self.bossID
+            solicitudesVC.userID = self.userID
+            
         }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    
-
 }
