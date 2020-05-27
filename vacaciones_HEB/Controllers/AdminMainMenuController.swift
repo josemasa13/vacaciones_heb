@@ -12,10 +12,24 @@ class AdminMainMenuController: UIViewController {
     
     var userID : String!
 
+    @IBOutlet weak var btnCerrarS: UIButton!
+    
+    @IBOutlet weak var btVerSolicitud: UIButton!
+    
+    @IBOutlet weak var btHistorialEmp: UIButton!
+    
+    @IBOutlet weak var btCrearSolicitud: UIButton!
+    
+    @IBOutlet weak var verMiHistorial: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        btnCerrarS.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        btVerSolicitud.layer.cornerRadius = 15.0
+        verMiHistorial.layer.cornerRadius = 15.0
+        btCrearSolicitud.layer.cornerRadius = 15.0
+        btHistorialEmp.layer.cornerRadius = 15.0
     }
     
 
