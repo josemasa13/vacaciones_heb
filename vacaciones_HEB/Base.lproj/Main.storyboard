@@ -1007,99 +1007,204 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TtU-qJ-OKM">
-                                <rect key="frame" x="45" y="163" width="285" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N6C-BV-Tu9">
+                                <rect key="frame" x="25" y="128" width="325" height="499"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID Solicitud:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYD-af-5QE">
-                                        <rect key="frame" x="12" y="90" width="117" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user-id-icon" translatesAutoresizingMaskIntoConstraints="NO" id="TSi-EM-Yc4">
-                                        <rect key="frame" x="163" y="0.0" width="90" height="82"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HO-R3-Q4X">
-                                        <rect key="frame" x="163" y="134" width="133" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Empleado:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIo-HC-Ufi">
-                                        <rect key="frame" x="157" y="90" width="103" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="key-icon" translatesAutoresizingMaskIntoConstraints="NO" id="p0N-i9-JHp">
-                                        <rect key="frame" x="29" y="0.0" width="83" height="73"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXr-22-zT7">
-                                        <rect key="frame" x="12" y="133" width="151" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adL-nV-vQc">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="92"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creada:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abo-Q7-hrh">
+                                                <rect key="frame" x="10" y="10" width="76.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0f-Tg-CBh">
+                                                <rect key="frame" x="10" y="49" width="66.5" height="23"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="23"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Abo-Q7-hrh" firstAttribute="top" secondItem="adL-nV-vQc" secondAttribute="top" constant="10" id="STW-eS-Xtc"/>
+                                            <constraint firstAttribute="bottom" secondItem="b0f-Tg-CBh" secondAttribute="bottom" constant="20" id="YGr-Fx-9aI"/>
+                                            <constraint firstItem="b0f-Tg-CBh" firstAttribute="leading" secondItem="adL-nV-vQc" secondAttribute="leading" constant="10" id="wVc-uw-82l"/>
+                                            <constraint firstItem="Abo-Q7-hrh" firstAttribute="leading" secondItem="adL-nV-vQc" secondAttribute="leading" constant="10" id="y93-5a-hPA"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TtU-qJ-OKM">
+                                        <rect key="frame" x="0.0" y="102" width="325" height="91.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empleado:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIo-HC-Ufi">
+                                                <rect key="frame" x="10" y="10" width="103" height="20"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HO-R3-Q4X">
+                                                <rect key="frame" x="10" y="48.5" width="66.5" height="23"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="23"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="IIo-HC-Ufi" firstAttribute="leading" secondItem="TtU-qJ-OKM" secondAttribute="leading" constant="10" id="D85-jR-5Gz"/>
+                                            <constraint firstItem="7HO-R3-Q4X" firstAttribute="leading" secondItem="TtU-qJ-OKM" secondAttribute="leading" constant="10" id="JNc-nZ-3Du"/>
+                                            <constraint firstItem="IIo-HC-Ufi" firstAttribute="top" secondItem="TtU-qJ-OKM" secondAttribute="top" constant="10" id="LQo-5K-wz3"/>
+                                            <constraint firstAttribute="bottom" secondItem="7HO-R3-Q4X" secondAttribute="bottom" constant="20" id="fKV-Dw-3xI"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9fS-NR-FiI">
+                                        <rect key="frame" x="0.0" y="203.5" width="325" height="92"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9Z-Wl-Guk">
+                                                <rect key="frame" x="0.0" y="0.0" width="157.5" height="92"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inicio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pW4-Sv-wpJ">
+                                                        <rect key="frame" x="10" y="10" width="51" height="20"/>
+                                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDT-lY-HMA">
+                                                        <rect key="frame" x="10" y="50" width="64" height="22"/>
+                                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="pW4-Sv-wpJ" firstAttribute="top" secondItem="A9Z-Wl-Guk" secondAttribute="top" constant="10" id="9lX-Hg-2hZ"/>
+                                                    <constraint firstItem="pW4-Sv-wpJ" firstAttribute="leading" secondItem="A9Z-Wl-Guk" secondAttribute="leading" constant="10" id="Ce7-oJ-5c9"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hDT-lY-HMA" secondAttribute="bottom" constant="20" id="m2i-FD-s7p"/>
+                                                    <constraint firstItem="hDT-lY-HMA" firstAttribute="leading" secondItem="A9Z-Wl-Guk" secondAttribute="leading" constant="10" id="usf-Tg-R8N"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsX-Gh-bLZ">
+                                                <rect key="frame" x="167.5" y="0.0" width="157.5" height="92"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsa-LN-DdF">
+                                                        <rect key="frame" x="10" y="10" width="29.5" height="20"/>
+                                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMS-uV-gCN">
+                                                        <rect key="frame" x="10" y="50" width="64" height="22"/>
+                                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="fsa-LN-DdF" firstAttribute="leading" secondItem="UsX-Gh-bLZ" secondAttribute="leading" constant="10" id="MHp-jT-bJB"/>
+                                                    <constraint firstItem="MMS-uV-gCN" firstAttribute="leading" secondItem="UsX-Gh-bLZ" secondAttribute="leading" constant="10" id="aQT-Dg-5hW"/>
+                                                    <constraint firstAttribute="bottom" secondItem="MMS-uV-gCN" secondAttribute="bottom" constant="20" id="aqr-a4-xlw"/>
+                                                    <constraint firstItem="fsa-LN-DdF" firstAttribute="top" secondItem="UsX-Gh-bLZ" secondAttribute="top" constant="10" id="zKU-FC-A26"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="A9Z-Wl-Guk" firstAttribute="width" secondItem="UsX-Gh-bLZ" secondAttribute="width" id="2uX-lu-reY"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgc-3u-u20">
+                                        <rect key="frame" x="0.0" y="305.5" width="325" height="91.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estatus:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgG-cM-Pfo">
+                                                <rect key="frame" x="10" y="10" width="79" height="20"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAw-33-z0s">
+                                                <rect key="frame" x="10" y="48.5" width="66.5" height="23"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="23"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="eAw-33-z0s" firstAttribute="leading" secondItem="Qgc-3u-u20" secondAttribute="leading" constant="10" id="1ns-rc-TCZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="eAw-33-z0s" secondAttribute="bottom" constant="20" id="5as-4a-QZa"/>
+                                            <constraint firstItem="ZgG-cM-Pfo" firstAttribute="top" secondItem="Qgc-3u-u20" secondAttribute="top" constant="10" id="dMI-8E-krv"/>
+                                            <constraint firstItem="ZgG-cM-Pfo" firstAttribute="leading" secondItem="Qgc-3u-u20" secondAttribute="leading" constant="10" id="gwH-gg-tR1"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="i3j-r3-CSb">
+                                        <rect key="frame" x="0.0" y="407" width="325" height="92"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6Q-ZB-zey">
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="92"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="23"/>
+                                                <state key="normal" title="Rechazar"/>
+                                                <connections>
+                                                    <action selector="rechazar:" destination="Me0-k5-Mgj" eventType="touchUpInside" id="xV6-PB-kZV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQI-dN-ya2">
+                                                <rect key="frame" x="165" y="0.0" width="160" height="92"/>
+                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="23"/>
+                                                <state key="normal" title="Aceptar"/>
+                                                <connections>
+                                                    <action selector="aprobar:" destination="Me0-k5-Mgj" eventType="touchUpInside" id="iib-bJ-e1Q"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="h6Q-ZB-zey" firstAttribute="width" secondItem="CQI-dN-ya2" secondAttribute="width" multiplier="1:1" id="HtJ-p3-oC8"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.62100869280000004" green="0.90367283939999998" blue="0.82482042280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qgc-3u-u20">
-                                <rect key="frame" x="45" y="400" width="285" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Estado: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgG-cM-Pfo">
-                                        <rect key="frame" x="110" y="19" width="80" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQI-dN-ya2">
-                                        <rect key="frame" x="169" y="100" width="75" height="70"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="aceptada"/>
-                                        <connections>
-                                            <action selector="aprobar:" destination="Me0-k5-Mgj" eventType="touchUpInside" id="iib-bJ-e1Q"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6Q-ZB-zey">
-                                        <rect key="frame" x="37" y="93" width="90" height="84"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="cancel"/>
-                                        <connections>
-                                            <action selector="rechazar:" destination="Me0-k5-Mgj" eventType="touchUpInside" id="xV6-PB-kZV"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAw-33-z0s">
-                                        <rect key="frame" x="77" y="64" width="147" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.80572076510000001" green="0.91229414239999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
+                                <constraints>
+                                    <constraint firstItem="TtU-qJ-OKM" firstAttribute="leading" secondItem="N6C-BV-Tu9" secondAttribute="leading" id="08p-sC-qSQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qgc-3u-u20" secondAttribute="trailing" id="7VH-eG-Mav"/>
+                                    <constraint firstItem="i3j-r3-CSb" firstAttribute="leading" secondItem="N6C-BV-Tu9" secondAttribute="leading" id="9Hb-qx-5a8"/>
+                                    <constraint firstItem="adL-nV-vQc" firstAttribute="top" secondItem="N6C-BV-Tu9" secondAttribute="top" id="9cY-MQ-dpf"/>
+                                    <constraint firstAttribute="trailing" secondItem="adL-nV-vQc" secondAttribute="trailing" id="B3q-In-HJO"/>
+                                    <constraint firstAttribute="trailing" secondItem="i3j-r3-CSb" secondAttribute="trailing" id="DP3-5F-D0V"/>
+                                    <constraint firstItem="adL-nV-vQc" firstAttribute="height" secondItem="9fS-NR-FiI" secondAttribute="height" multiplier="1:1" id="Q1E-pv-QKT"/>
+                                    <constraint firstItem="adL-nV-vQc" firstAttribute="leading" secondItem="N6C-BV-Tu9" secondAttribute="leading" id="VFq-ac-JUN"/>
+                                    <constraint firstItem="adL-nV-vQc" firstAttribute="height" secondItem="i3j-r3-CSb" secondAttribute="height" multiplier="1:1" id="XyW-Bn-ym7"/>
+                                    <constraint firstAttribute="trailing" secondItem="TtU-qJ-OKM" secondAttribute="trailing" id="cMa-12-hyP"/>
+                                    <constraint firstItem="adL-nV-vQc" firstAttribute="height" secondItem="Qgc-3u-u20" secondAttribute="height" multiplier="1:1" id="eYt-Mp-hpQ"/>
+                                    <constraint firstItem="Qgc-3u-u20" firstAttribute="leading" secondItem="N6C-BV-Tu9" secondAttribute="leading" id="fXG-8k-Gb4"/>
+                                    <constraint firstAttribute="trailing" secondItem="9fS-NR-FiI" secondAttribute="trailing" id="rvt-GZ-PfK"/>
+                                    <constraint firstItem="9fS-NR-FiI" firstAttribute="leading" secondItem="N6C-BV-Tu9" secondAttribute="leading" id="tMI-2E-dbi"/>
+                                    <constraint firstItem="adL-nV-vQc" firstAttribute="height" secondItem="TtU-qJ-OKM" secondAttribute="height" multiplier="1:1" id="y2L-iP-XFX"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.89411764709999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="UnC-zh-tAW" firstAttribute="trailing" secondItem="N6C-BV-Tu9" secondAttribute="trailing" constant="25" id="Ni0-Ee-rWZ"/>
+                            <constraint firstItem="N6C-BV-Tu9" firstAttribute="leading" secondItem="UnC-zh-tAW" secondAttribute="leading" constant="25" id="OQH-3h-6rx"/>
+                            <constraint firstItem="N6C-BV-Tu9" firstAttribute="top" secondItem="UnC-zh-tAW" secondAttribute="top" constant="20" id="UKR-Dx-ffF"/>
+                            <constraint firstItem="UnC-zh-tAW" firstAttribute="bottom" secondItem="N6C-BV-Tu9" secondAttribute="bottom" constant="20" id="w6K-pr-Eav"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UnC-zh-tAW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detalle" id="ed0-aX-Prl"/>
                     <connections>
                         <outlet property="btAceptar" destination="CQI-dN-ya2" id="p02-vk-QJj"/>
                         <outlet property="btRechazar" destination="h6Q-ZB-zey" id="Uhs-RN-zEk"/>
+                        <outlet property="lbCreada" destination="b0f-Tg-CBh" id="rdT-C4-Skt"/>
                         <outlet property="lbEstadoSol" destination="eAw-33-z0s" id="fCQ-ff-3dF"/>
+                        <outlet property="lbFin" destination="MMS-uV-gCN" id="srq-Rl-ukw"/>
                         <outlet property="lbIDEmpleado" destination="7HO-R3-Q4X" id="PtS-44-Znr"/>
-                        <outlet property="lbIDSol" destination="cXr-22-zT7" id="OTE-Y3-h3h"/>
+                        <outlet property="lbInicio" destination="hDT-lY-HMA" id="99w-Mj-ab4"/>
+                        <outlet property="viewCreada" destination="adL-nV-vQc" id="h6K-gD-0z2"/>
                         <outlet property="viewEstado" destination="Qgc-3u-u20" id="Ejj-jo-CKS"/>
+                        <outlet property="viewFin" destination="UsX-Gh-bLZ" id="hq2-3s-En1"/>
                         <outlet property="viewInfo" destination="TtU-qJ-OKM" id="oTg-75-pLk"/>
+                        <outlet property="viewInicio" destination="A9Z-Wl-Guk" id="Yal-vi-N89"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcA-u2-X87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1151,14 +1256,10 @@
         <segue reference="sZL-AN-fd5"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="aceptada" width="598" height="592"/>
-        <image name="cancel" width="260" height="260"/>
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="heb" width="1280" height="427"/>
         <image name="ic_chevron_left" width="24" height="24"/>
         <image name="ic_chevron_right" width="24" height="24"/>
         <image name="ic_close" width="24" height="24"/>
-        <image name="key-icon" width="256" height="256"/>
-        <image name="user-id-icon" width="512" height="512"/>
     </resources>
 </document>

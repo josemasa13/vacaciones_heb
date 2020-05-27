@@ -47,7 +47,7 @@ class DetalleEmpleadoViewController: UIViewController {
     }
     
     func setUpLabels(){
-        lbFechaCreada.text = getDateFormatted(date: solicitud.fechaInicio.dateValue())
+        lbFechaCreada.text = getDateFormatted(date: solicitud.fechaCreacion.dateValue())
         lbFechaInicio.text = getDateFormatted(date: solicitud.fechaInicio.dateValue())
         lbFechaFin.text = getDateFormatted(date: solicitud.fechaFin.dateValue())
         lbNombreJefe.text = solicitud.nombreJefe

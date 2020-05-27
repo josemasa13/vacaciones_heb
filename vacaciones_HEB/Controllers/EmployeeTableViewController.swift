@@ -67,6 +67,7 @@ class EmployeeTableViewController: UITableViewController {
         cell.nameLabel.text = solicitudes[indexPath.row].nombreEmpleado
         cell.statusLabel.text = solicitudes[indexPath.row].estatus
         cell.dateLabel.text = getDateFormatted(start: solicitudes[indexPath.row].fechaInicio.dateValue(), end: solicitudes[indexPath.row].fechaFin.dateValue())
+        cell.agoLabel.text = getLongAgo(firstDate: solicitudes[indexPath.row].fechaCreacion.dateValue(), secondDate: Date())
         switch solicitudes[indexPath.row].estatus {
         case "rechazado":
             cell.statusView.backgroundColor = UIColor.red
@@ -89,14 +90,20 @@ class EmployeeTableViewController: UITableViewController {
         return formatter.string(from: start) + " al " + formatter.string(from: end) + " 2020"
     }
     
-    func getLongAgo(firstDate: Date, secondDate: Date) -> Int{
+    func getLongAgo(firstDate: Date, secondDate: Date) -> String{
         let calendar = Calendar.current
 
         let date1 = calendar.startOfDay(for: firstDate)
         let date2 = calendar.startOfDay(for: secondDate)
 
         let components = calendar.dateComponents([.day], from: date1, to: date2)
-        return components.day!
+        if components.day! == 0 {
+            return "Hoy"
+        }else if components.day! == 1 {
+            return "1 día"
+        }else{
+            return "\(components.day!) días"
+        }
     }
     
     
@@ -107,7 +114,7 @@ class EmployeeTableViewController: UITableViewController {
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
-                        let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID,  justifRechazo: (document.data()["justificacion"] as! String))
+                        let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID,  justifRechazo: (document.data()["justificacion"] as! String),fechaCreacion: (document.data()["fechacreacion"] as! Timestamp))
                         
                         self.solicitudes.append(solicitud)
                         
@@ -191,7 +198,7 @@ class EmployeeTableViewController: UITableViewController {
         if segue.identifier == "detalleEmp" {
             let vistaDetalle = segue.destination as! DetalleEmpleadoViewController
             
-             let solicitud = Solicitud(nombreEmpleado: solicitudes[tableView.indexPathForSelectedRow!.row].nombreEmpleado, nombreJefe: solicitudes[tableView.indexPathForSelectedRow!.row].nombreJefe, fechaInicio: solicitudes[tableView.indexPathForSelectedRow!.row].fechaInicio, fechaFin: solicitudes[tableView.indexPathForSelectedRow!.row].fechaFin, estatus:  solicitudes[tableView.indexPathForSelectedRow!.row].estatus, solicitudID: solicitudes[tableView.indexPathForSelectedRow!.row].solicitudID, justifRechazo: solicitudes[tableView.indexPathForSelectedRow!.row].justifRechazo)
+             let solicitud = Solicitud(nombreEmpleado: solicitudes[tableView.indexPathForSelectedRow!.row].nombreEmpleado, nombreJefe: solicitudes[tableView.indexPathForSelectedRow!.row].nombreJefe, fechaInicio: solicitudes[tableView.indexPathForSelectedRow!.row].fechaInicio, fechaFin: solicitudes[tableView.indexPathForSelectedRow!.row].fechaFin, estatus:  solicitudes[tableView.indexPathForSelectedRow!.row].estatus, solicitudID: solicitudes[tableView.indexPathForSelectedRow!.row].solicitudID, justifRechazo: solicitudes[tableView.indexPathForSelectedRow!.row].justifRechazo, fechaCreacion: solicitudes[tableView.indexPathForSelectedRow!.row].fechaCreacion)
              
              vistaDetalle.solicitud = solicitud
         }else{
