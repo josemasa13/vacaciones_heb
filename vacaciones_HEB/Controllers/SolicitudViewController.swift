@@ -39,6 +39,13 @@ class SolicitudViewController: UIViewController {
     @IBOutlet weak var btnFecha: UIButton!
     @IBOutlet weak var lblSaldo: UILabel!
     
+    @IBOutlet weak var lbFechaInicio: UILabel!
+    @IBOutlet weak var lbInicio: UILabel!
+    @IBOutlet weak var lbFechaFin: UILabel!
+    @IBOutlet weak var lbFin: UILabel!
+    
+    @IBOutlet weak var viewFechas: UIStackView!
+    @IBOutlet weak var botFechasView: UIStackView!
     
     //pop over
     lazy var bulletinRecordatorio: BLTNItemManager = {
@@ -52,18 +59,22 @@ class SolicitudViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewFechas.isHidden = true
+        
         activityRingView.translatesAutoresizingMaskIntoConstraints = false
         
-        activityRingView.startColor = UIColor.red
-        activityRingView.endColor = UIColor.black
+        activityRingView.startColor = UIColor.systemGreen
+        activityRingView.endColor = UIColor.systemGray
         
-        activityRingView.ringWidth = 18
+        activityRingView.ringWidth = 25
         view.addSubview(activityRingView)
         NSLayoutConstraint.activate([
             activityRingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityRingView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -235),
-            activityRingView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.33),
-            activityRingView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.33),
+            activityRingView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -160),
+            activityRingView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
+            activityRingView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.50),
+            lblSaldo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            lblSaldo.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -160),
         ])
         
         btnFecha.titleLabel?.text = "Elegir Fechas"
@@ -116,13 +127,14 @@ class SolicitudViewController: UIViewController {
                 let diasAux = document.data()!["saldo"] as! Double
                 self.nombreEmpleado = empleadoAux
                 self.diasRestantes = diasAux
-                self.activityRingView.animateProgress(to: self.diasRestantes/6.0, withDuration: 3)
+                self.activityRingView.animateProgress(to: self.diasRestantes/20.0, withDuration: 3)
                 self.lblSaldo.text = String(Int(diasAux))
             } else {
                 print("Document does not exist")
             }
         }
         
+        view.sendSubviewToBack(activityRingView)
         
     }
     //init
@@ -140,7 +152,7 @@ class SolicitudViewController: UIViewController {
         print(nombreEmpleado)
         
         ref = db.collection("solicitudes").addDocument(data: [
-            "timestamp": Date(),
+            "fechacreacion": Date(),
             "estatus": "pendiente",
             "fechainicio": startDate,
             "fechafinal": endDate,
@@ -195,7 +207,11 @@ class SolicitudViewController: UIViewController {
             vc.delegate = self
         }
     }
-    
+    func getDateFormatted(date: Date) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM y"
+        return formatter.string(from: date)
+    }
 
 }
 
@@ -206,6 +222,18 @@ extension SolicitudViewController: CalendarDelegate {
         self.lbrangeDates.text = dateRanges
         self.dateSelected = true
         self.btnFecha.titleLabel?.text = "Cambiar fecha"
+        self.viewFechas.isHidden = false
+        if startDate == endDate {
+            self.lbInicio.text = getDateFormatted(date: startDate!)
+            self.lbFechaInicio.text = "Fecha elegida:"
+            botFechasView.isHidden = true
+        }else{
+            botFechasView.isHidden = false
+            self.lbInicio.text = getDateFormatted(date: startDate!)
+            self.lbFechaInicio.text = "Fecha inicial:"
+            self.lbFin.text = getDateFormatted(date: endDate!)
+        }
+        self.lbrangeDates.isHidden = true
         self.checkSend()
     }
 }
