@@ -80,7 +80,7 @@ class AdminTableViewController: UITableViewController, protocoloStatus {
                         print("Error getting documents: \(err)")
                     } else {
                         for document in querySnapshot!.documents {
-                            let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID, justifRechazo: (document.data()["justificacion"] as! String),fechaCreacion: (document.data()["fechacreacion"] as! Timestamp), userID: (document.data()["userID"] as! String))
+                            let solicitud = Solicitud(nombreEmpleado : (document.data()["nombreempleado"]! as! String),nombreJefe:(document.data()["nombrejefe"]! as! String),fechaInicio: (document.data()["fechainicio"]! as! Timestamp),fechaFin: (document.data()["fechafinal"]! as! Timestamp),estatus: (document.data()["estatus"] as! String), solicitudID: document.documentID, justifRechazo: (document.data()["justificacion"] as! String),fechaCreacion: (document.data()["fechacreacion"] as! Timestamp), userID: (document.data()["idempleado"] as! String))
                             
                             self.solicitudes.append(solicitud)
                             

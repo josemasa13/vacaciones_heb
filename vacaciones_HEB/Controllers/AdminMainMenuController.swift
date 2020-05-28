@@ -113,6 +113,7 @@ class AdminMainMenuController: UIViewController {
             let solicitudVC = segue.destination as! SolicitudViewController
             solicitudVC.userID = self.userID
             solicitudVC.bossID = self.bossID
+            solicitudVC.isAdmin = true
         } else{
             let nav =  segue.destination as! UINavigationController
             let solicitudesVC = nav.topViewController as! EmployeeTableViewController

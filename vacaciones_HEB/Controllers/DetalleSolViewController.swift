@@ -63,7 +63,6 @@ class DetalleSolViewController: UIViewController {
     @IBOutlet weak var lbInicio: UILabel!
     @IBOutlet weak var lbFin: UILabel!
     var delegado : protocoloStatus!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         lbIDEmpleado.text = solicitud.nombreEmpleado

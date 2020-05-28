@@ -16,6 +16,10 @@ protocol CalendarDelegate {
     func didUpdatedDates(_ startDate: Date?, _ endDate: Date?,_ dateRanges: String)
 }
 
+protocol ActStatus {
+    func updateData() -> Void
+}
+
 class SolicitudViewController: UIViewController {
     
     let db = Firestore.firestore()
@@ -29,6 +33,11 @@ class SolicitudViewController: UIViewController {
     var justificacionRechazo: String = ""
     
     var diasRestantes : Int!
+    
+    var isAdmin = false
+    
+    var delegado : ActStatus!
+
     
 
     var startDate: Date? = nil
@@ -208,7 +217,12 @@ class SolicitudViewController: UIViewController {
         recordatorio.appearance.actionButtonColor = .systemGreen
         recordatorio.actionHandler = { (item: BLTNActionItem) in
             recordatorio.manager?.dismissBulletin(animated: true)
-            Utility.backToPreviousScreen(self)
+            if self.isAdmin {
+                Utility.backToPreviousScreen(self)
+            }else{
+                self.delegado.updateData()
+                Utility.backToPreviousScreen(self)
+            }
         }
         recordatorio.requiresCloseButton = false
         recordatorio.isDismissable = false

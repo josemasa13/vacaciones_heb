@@ -155,6 +155,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addBtn" destination="Xem-gO-Xvx" id="Kvc-a4-5BC"/>
                         <outlet property="logoutBtn" destination="yAS-IL-UVK" id="58M-2D-zTz"/>
                         <segue destination="lTX-tA-MPU" kind="presentation" identifier="detalleEmp" id="f8k-5s-4TV"/>
                     </connections>
@@ -297,9 +298,11 @@
                         <outlet property="lblSaldo" destination="V1h-kt-vD7" id="Vxs-hO-xco"/>
                         <outlet property="lbrangeDates" destination="IQl-N9-J3q" id="3EX-3G-DbC"/>
                         <outlet property="viewFechas" destination="t6m-hJ-kEc" id="PWL-Ti-81m"/>
+                        <segue destination="Q7G-PW-qLs" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToTableViewWithSegue:" id="DS9-RE-g3n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZFq-sj-DL4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Q7G-PW-qLs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2493.5999999999999" y="511.39430284857576"/>
         </scene>
@@ -1388,7 +1391,7 @@ para dispositivos móviles en el semestre Febrero Junio 2020.</string>
     <inferredMetricsTieBreakers>
         <segue reference="MV3-4i-DGz"/>
         <segue reference="dOy-ZO-dnP"/>
-        <segue reference="sZL-AN-fd5"/>
+        <segue reference="AHo-vF-Z9Z"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Captura de Pantalla 2020-05-27 a la(s) 22.39.15" width="488" height="489"/>

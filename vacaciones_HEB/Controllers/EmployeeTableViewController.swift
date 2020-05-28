@@ -11,7 +11,13 @@ import Firebase
 import Foundation
 import BLTNBoard
 
-class EmployeeTableViewController: UITableViewController {
+class EmployeeTableViewController: UITableViewController, ActStatus {
+    
+    func updateData(){
+        solicitudes.removeAll()
+        getSolicitudes()
+        self.tableView.reloadData()
+    }
     
     let db = Firestore.firestore()
 
@@ -27,6 +33,9 @@ class EmployeeTableViewController: UITableViewController {
 
     @IBOutlet weak var logoutBtn: UIBarButtonItem!
     
+    @IBOutlet weak var addBtn: UIBarButtonItem!
+    
+    
     var isModal = false
     
     override func viewDidLoad() {
@@ -36,7 +45,9 @@ class EmployeeTableViewController: UITableViewController {
         getSolicitudes()
         if isModal {
             logoutBtn.isEnabled = false
-            logoutBtn.tintColor = UIColor.clear
+            logoutBtn.tintColor = .clear
+            addBtn.isEnabled = false
+            addBtn.tintColor = .clear
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -44,7 +55,6 @@ class EmployeeTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -191,6 +201,10 @@ class EmployeeTableViewController: UITableViewController {
         return true
     }
     */
+    
+    @IBAction func unwindToTableView(segue: UIStoryboardSegue) {
+        
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -208,6 +222,7 @@ class EmployeeTableViewController: UITableViewController {
             
             nav.userID = self.userID
             nav.bossID = self.bossID
+            nav.delegado = self
         }
     }
 }
