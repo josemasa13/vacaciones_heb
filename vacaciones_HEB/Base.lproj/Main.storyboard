@@ -72,6 +72,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="BVt-YY-8Uz" firstAttribute="top" secondItem="0gm-sz-FJV" secondAttribute="bottom" constant="50" id="2IR-Fj-Ywp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pf5-Nx-Weo" secondAttribute="bottom" constant="50" id="3od-d9-mxi"/>
@@ -87,6 +88,9 @@
                             <constraint firstItem="0gm-sz-FJV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zDk-Zg-kGD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="NNh-1N-cYD" appends="YES" id="aF4-Gl-cXV"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="btnCreditos" destination="Pf5-Nx-Weo" id="8Ry-X0-5uV"/>
@@ -98,6 +102,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NNh-1N-cYD">
+                    <connections>
+                        <action selector="dissmissKeyboard:" destination="BYZ-38-t0r" id="3XK-ag-d8Y"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-244" y="118.29085457271366"/>
         </scene>

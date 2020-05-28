@@ -23,6 +23,11 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var entrarBtn: UIButton!
     
     @IBOutlet weak var btnCreditos: UIButton!
+    
+    @IBAction func dissmissKeyboard(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
