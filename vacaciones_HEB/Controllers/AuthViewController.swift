@@ -22,11 +22,14 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var tfContraseña: UITextField!
     @IBOutlet weak var entrarBtn: UIButton!
     
+    @IBOutlet weak var btnCreditos: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         entrarBtn.layer.cornerRadius = 15
         entrarBtn.clipsToBounds = true
+        btnCreditos.layer.cornerRadius = 15
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -103,7 +106,9 @@ class AuthViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "admin" {
+        if segue.identifier == "creditos" {
+            
+        } else if segue.identifier == "admin" {
             let nav = segue.destination as! AdminMainMenuController
             nav.userID = self.id
         }else {
@@ -113,6 +118,7 @@ class AuthViewController: UIViewController {
             vc.userID = self.id
             vc.bossID = self.bossID
         }
+        
     }
     
 }

@@ -192,7 +192,7 @@ class SolicitudViewController: UIViewController {
     }
     //pop over
     func getBulletinRecordatorio() -> BLTNItem{
-        let recordatorio = BLTNPageItem(title: "Se ha enviado la solicitud")
+        let recordatorio = BLTNPageItem(title: "Se ha enviado la solicitud a \(self.nombreJefe)")
         recordatorio.descriptionText = "Recordatorio: Tu nuevo saldo se reflejará cuando se ajuste la nomina"
         recordatorio.actionButtonTitle = "De acuerdo"
         recordatorio.image = UIImage(named: "IntroCompletion")?.withTintColor(.systemGreen)
