@@ -29,6 +29,10 @@ class DetalleEmpleadoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if solicitud.estatus == "aprobado" {
+            lbJustificacion.text = "Solicitud aceptada"
+        }
+        
         roundCorners(view: viewFechaCreada)
         roundCorners(view: viewInicio)
         roundCorners(view: viewFin)
