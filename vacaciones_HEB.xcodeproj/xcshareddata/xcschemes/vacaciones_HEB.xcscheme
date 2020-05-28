@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3265D1F9244FAD4F004949AE"
-               BuildableName = "vacaciones_HEB.app"
+               BuildableName = "HEB Vacaciones.app"
                BlueprintName = "vacaciones_HEB"
                ReferencedContainer = "container:vacaciones_HEB.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3265D1F9244FAD4F004949AE"
-            BuildableName = "vacaciones_HEB.app"
+            BuildableName = "HEB Vacaciones.app"
             BlueprintName = "vacaciones_HEB"
             ReferencedContainer = "container:vacaciones_HEB.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3265D1F9244FAD4F004949AE"
-            BuildableName = "vacaciones_HEB.app"
+            BuildableName = "HEB Vacaciones.app"
             BlueprintName = "vacaciones_HEB"
             ReferencedContainer = "container:vacaciones_HEB.xcodeproj">
          </BuildableReference>
