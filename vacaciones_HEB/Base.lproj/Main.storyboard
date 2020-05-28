@@ -11,7 +11,7 @@
         <!--Auth View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="login" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="AuthViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="AuthViewController" customModule="HEB_Vacaciones" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,7 +104,7 @@
         <!--Solicitudes-->
         <scene sceneID="JVP-tZ-u0C">
             <objects>
-                <tableViewController id="7nZ-vK-g2O" customClass="EmployeeTableViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7nZ-vK-g2O" customClass="EmployeeTableViewController" customModule="HEB_Vacaciones" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fuu-1x-yxo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,7 +167,7 @@
         <!--Solicitud View Controller-->
         <scene sceneID="i32-ge-29Q">
             <objects>
-                <viewController id="XlF-cg-bW6" customClass="SolicitudViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XlF-cg-bW6" customClass="SolicitudViewController" customModule="HEB_Vacaciones" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OVx-Ug-TLP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,7 +309,7 @@
         <!--Detalle Empleado View Controller-->
         <scene sceneID="EQi-of-Rap">
             <objects>
-                <viewController id="lTX-tA-MPU" customClass="DetalleEmpleadoViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lTX-tA-MPU" customClass="DetalleEmpleadoViewController" customModule="HEB_Vacaciones" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mww-56-cVo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -521,7 +521,7 @@
         <!--Date Selection View Controller-->
         <scene sceneID="846-aT-3m2">
             <objects>
-                <viewController id="qLD-MY-Itz" customClass="DateSelectionViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qLD-MY-Itz" customClass="DateSelectionViewController" customModule="HEB_Vacaciones" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="50p-jm-ayX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -706,7 +706,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="BLI-2B-ctL" customClass="DateCell" customModule="vacaciones_HEB" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="BLI-2B-ctL" customClass="DateCell" customModule="HEB_Vacaciones" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OAE-9f-gNq">
@@ -816,7 +816,7 @@
         <!--Admin Main Menu Controller-->
         <scene sceneID="Tra-aH-hGs">
             <objects>
-                <viewController storyboardIdentifier="admin" modalPresentationStyle="fullScreen" id="RWh-l5-KRJ" customClass="AdminMainMenuController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="admin" modalPresentationStyle="fullScreen" id="RWh-l5-KRJ" customClass="AdminMainMenuController" customModule="HEB_Vacaciones" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u2y-pi-sFV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -941,13 +941,13 @@
         <!--Solicitudes-->
         <scene sceneID="L8x-SJ-Zd5">
             <objects>
-                <tableViewController title="Solicitudes" id="9e2-vY-kVI" customClass="AdminTableViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Solicitudes" id="9e2-vY-kVI" customClass="AdminTableViewController" customModule="HEB_Vacaciones" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xSz-UX-NLd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.89411764709999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celda" rowHeight="101" id="y11-L8-PSF" customClass="CustomTableViewCell" customModule="vacaciones_HEB" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celda" rowHeight="101" id="y11-L8-PSF" customClass="CustomTableViewCell" customModule="HEB_Vacaciones" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y11-L8-PSF" id="2j5-4G-GF8">
@@ -1020,7 +1020,7 @@
         <!--Detalle-->
         <scene sceneID="CUJ-Lm-Qg2">
             <objects>
-                <viewController id="Me0-k5-Mgj" customClass="DetalleSolViewController" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Me0-k5-Mgj" customClass="DetalleSolViewController" customModule="HEB_Vacaciones" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VfL-hU-Py4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1251,7 +1251,7 @@
         <!--View Controller Creditos-->
         <scene sceneID="1O4-iV-NqP">
             <objects>
-                <viewController id="75g-cf-o9J" customClass="ViewControllerCreditos" customModule="vacaciones_HEB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="75g-cf-o9J" customClass="ViewControllerCreditos" customModule="HEB_Vacaciones" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pmc-Tb-0wO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1343,7 +1343,11 @@ para dispositivos móviles en el semestre Febrero Junio 2020.</string>
                                     <constraint firstItem="8Ou-vD-Xk9" firstAttribute="leading" secondItem="m9p-7X-d1B" secondAttribute="leading" id="Ace-Cr-exy"/>
                                     <constraint firstItem="8Ou-vD-Xk9" firstAttribute="leading" secondItem="Ocm-pE-be4" secondAttribute="leading" constant="13.5" id="IlH-hs-Vp7"/>
                                     <constraint firstItem="m9p-7X-d1B" firstAttribute="leading" secondItem="lC5-EX-cJx" secondAttribute="leading" id="Kap-7g-IAI"/>
+                                    <constraint firstItem="pSC-AH-2Xv" firstAttribute="height" secondItem="m9p-7X-d1B" secondAttribute="height" multiplier="0.330579" id="P4Z-Fj-7er"/>
+                                    <constraint firstItem="pSC-AH-2Xv" firstAttribute="height" secondItem="8Ou-vD-Xk9" secondAttribute="height" multiplier="0.412371" id="UVj-Ph-vXR"/>
+                                    <constraint firstItem="pSC-AH-2Xv" firstAttribute="height" secondItem="9ta-IR-k8e" secondAttribute="height" multiplier="0.373832" id="cgK-2n-KvV"/>
                                     <constraint firstItem="lC5-EX-cJx" firstAttribute="top" secondItem="Ocm-pE-be4" secondAttribute="top" constant="441" id="oLj-mu-3X7"/>
+                                    <constraint firstItem="pSC-AH-2Xv" firstAttribute="height" secondItem="lC5-EX-cJx" secondAttribute="height" multiplier="0.377358" id="uSE-wR-wLK"/>
                                 </constraints>
                             </stackView>
                         </subviews>

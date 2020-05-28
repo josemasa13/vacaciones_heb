@@ -167,6 +167,50 @@ class EmployeeTableViewController: UITableViewController, ActStatus {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "detalleEmp", sender: self)
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if solicitudes[indexPath.row].estatus == "pendiente"{
+            if editingStyle == .delete {
+                deleteSolicitud(i: indexPath.row)
+                updateSaldo(i: indexPath.row)
+                solicitudes.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }else{
+            errorBorrar.showBulletin(above: self)
+            print("no se puede borrar una solicitud aprobada o rechazada")
+        }
+    }
+    lazy var errorBorrar: BLTNItemManager = {
+      let rootItem: BLTNItem = getBulletinBorrar()
+      return BLTNItemManager(rootItem: rootItem)
+    }()
+    
+    func getBulletinBorrar() -> BLTNItem {
+        let blt = BLTNPageItem(title: "No se puede borrar")
+        blt.descriptionText = "No se puede borrar una solicitud si ya fue aceptada o rechazada"
+        blt.actionButtonTitle = "Ok"
+        blt.actionHandler = { (item: BLTNActionItem) in
+            blt.manager?.dismissBulletin()
+        }
+        blt.image = UIImage(named: "warning")
+        return blt
+    }
+    
+    func deleteSolicitud(i: Int){
+        db.collection("solicitudes").document(solicitudes[i].solicitudID).delete(){ err in
+            if let err = err {
+                print("error borrando")
+            }else{
+                print("borrado ")
+            }
+        }
+    }
+    func updateSaldo(i: Int) {
+        let ref = db.collection("users").document(solicitudes[i].userID)
+        let diasVacaciones = Double(solicitudes[i].fechaFin.dateValue().timeIntervalSince(solicitudes[i].fechaInicio.dateValue()) / 86400)
+        ref.updateData(["saldo": FieldValue.increment(diasVacaciones + 1)])
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
