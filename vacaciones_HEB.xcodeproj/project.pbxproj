@@ -27,16 +27,17 @@
 		5FDFEA46247C808B008F08C0 /* CeldaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDFEA44247C808B008F08C0 /* CeldaTableViewCell.xib */; };
 		7BB26ACCA0158606D6F0CE56 /* Pods_vacaciones_HEB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB50F054D2CFFAD1131D35E /* Pods_vacaciones_HEB.framework */; };
 		8B1547342451D51400D70DDE /* DetalleSolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1547332451D51400D70DDE /* DetalleSolViewController.swift */; };
+		8B52DF4C247F74A300C48B85 /* ViewControllerCreditos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52DF4B247F74A300C48B85 /* ViewControllerCreditos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		32500BAD246A44BF006FB710 /* AdminMainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMainMenuController.swift; sourceTree = "<group>"; };
-		3265D1FA244FAD4F004949AE /* vacaciones_HEB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vacaciones_HEB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3265D1FA244FAD4F004949AE /* HEB Vacaciones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HEB Vacaciones.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3265D1FD244FAD4F004949AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3265D1FF244FAD4F004949AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3265D201244FAD4F004949AE /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		3265D204244FAD4F004949AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3265D206244FAD6A004949AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3265D206244FAD6A004949AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = vacaciones_HEB/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		3265D209244FAD6A004949AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3265D20B244FAD6A004949AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A21BA12450F38F0089E31A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		5FDFEA44247C808B008F08C0 /* CeldaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CeldaTableViewCell.xib; path = vacaciones_HEB/CeldaTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		6BBCF35BEE31BF1B1C4BC8C6 /* Pods-vacaciones_HEB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vacaciones_HEB.release.xcconfig"; path = "Target Support Files/Pods-vacaciones_HEB/Pods-vacaciones_HEB.release.xcconfig"; sourceTree = "<group>"; };
 		8B1547332451D51400D70DDE /* DetalleSolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleSolViewController.swift; sourceTree = "<group>"; };
+		8B52DF4B247F74A300C48B85 /* ViewControllerCreditos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerCreditos.swift; sourceTree = "<group>"; };
 		AFB50F054D2CFFAD1131D35E /* Pods_vacaciones_HEB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vacaciones_HEB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB703115E26884E604592302 /* Pods-vacaciones_HEB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vacaciones_HEB.debug.xcconfig"; path = "Target Support Files/Pods-vacaciones_HEB/Pods-vacaciones_HEB.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +84,7 @@
 		3265D1FB244FAD4F004949AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3265D1FA244FAD4F004949AE /* vacaciones_HEB.app */,
+				3265D1FA244FAD4F004949AE /* HEB Vacaciones.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +97,7 @@
 				3265D1FD244FAD4F004949AE /* AppDelegate.swift */,
 				3265D1FF244FAD4F004949AE /* SceneDelegate.swift */,
 				3265D203244FAD4F004949AE /* Main.storyboard */,
+				8B52DF4B247F74A300C48B85 /* ViewControllerCreditos.swift */,
 				3265D206244FAD6A004949AE /* Assets.xcassets */,
 				3265D208244FAD6A004949AE /* LaunchScreen.storyboard */,
 				3265D20B244FAD6A004949AE /* Info.plist */,
@@ -167,7 +170,7 @@
 			);
 			name = vacaciones_HEB;
 			productName = vacaciones_HEB;
-			productReference = 3265D1FA244FAD4F004949AE /* vacaciones_HEB.app */;
+			productReference = 3265D1FA244FAD4F004949AE /* HEB Vacaciones.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -271,6 +274,7 @@
 				5FDFEA3E2479C1AF008F08C0 /* Utility.swift in Sources */,
 				5FCEDF4A24774B7500D2F186 /* DateSelectionViewController.swift in Sources */,
 				8B1547342451D51400D70DDE /* DetalleSolViewController.swift in Sources */,
+				8B52DF4C247F74A300C48B85 /* ViewControllerCreditos.swift in Sources */,
 				3265D1FE244FAD4F004949AE /* AppDelegate.swift in Sources */,
 				5F951E92247DEF630030C581 /* DetalleEmpleadoViewController.swift in Sources */,
 				3265D200244FAD4F004949AE /* SceneDelegate.swift in Sources */,
@@ -431,7 +435,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Itesm.vacaciones-HEB";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "HEB Vacaciones";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -450,7 +454,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Itesm.vacaciones-HEB";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "HEB Vacaciones";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
