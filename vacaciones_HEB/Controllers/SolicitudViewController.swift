@@ -33,6 +33,7 @@ class SolicitudViewController: UIViewController {
 
     var startDate: Date? = nil
     var endDate: Date? = nil
+    var saldo : Int!
     
     @IBOutlet weak var btnEnviar: UIButton!
     @IBOutlet weak var lbrangeDates: UILabel!
@@ -113,6 +114,7 @@ class SolicitudViewController: UIViewController {
         let currDateTime = userCalendar.date(from: dateComponents)
         
         
+        
         db.collection("users").document(bossID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let jefeAux = document.data()!["name"] as! String
@@ -131,6 +133,7 @@ class SolicitudViewController: UIViewController {
                 self.nombreEmpleado = empleadoAux
                 self.diasRestantes = diasAux
                 self.activityRingView.animateProgress(to: Double(self.diasRestantes)/10.0, withDuration: 3)
+                self.saldo = diasAux
                 self.lblSaldo.text = String(Int(diasAux))
             } else {
                 print("Document does not exist")
@@ -173,9 +176,15 @@ class SolicitudViewController: UIViewController {
                 let alert = UIAlertController(title: "Solicitud Enviada", message: "Tu solicitud se ha enviado a tu suprior", preferredStyle: UIAlertController.Style.alert)
 
                 // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                       // show the alert
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                
+                // substract days from user
+                let diasVacaciones = Int(self.endDate!.timeIntervalSince(self.startDate!) / 86400)
+                
+                let docRef = self.db.collection("users").document(self.userID)
+                docRef.updateData(["saldo": self.saldo - (diasVacaciones + 1)])
+                
+                // show the alert
                 self.present(alert, animated: true, completion: nil)
                 
             }

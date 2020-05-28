@@ -142,6 +142,7 @@ class DetalleSolViewController: UIViewController {
                 self.updateJustificacion()
                 justificacion.manager?.dismissBulletin(animated: true)
                 self.navigationController?.popViewController(animated: true)
+                self.updateSaldo()
             }
         }
         justificacion.isDismissable = false
@@ -164,14 +165,22 @@ class DetalleSolViewController: UIViewController {
         docRef.updateData(["estatus": "rechazado"])
         var estado = lbEstadoSol.text!
         estado = "rechazado"
+        
         delegado.actualizarEstatus(estat: estado)
        // dismiss(animated: true, completion: nil)
         bulletinJust.showBulletin(above: self)
+        
     }
     func updateJustificacion() {
         //referencia doc
         let ref = db.collection("solicitudes").document(solicitud.solicitudID)
         ref.updateData(["justificacion": solicitud.justifRechazo])
+    }
+    
+    func updateSaldo() {
+        let ref = db.collection("users").document(solicitud.userID)
+        let diasVacaciones = Double(solicitud.fechaFin.dateValue().timeIntervalSince(solicitud.fechaInicio.dateValue()) / 86400)
+        ref.updateData(["saldo": FieldValue.increment(diasVacaciones + 1)])
     }
     
     
