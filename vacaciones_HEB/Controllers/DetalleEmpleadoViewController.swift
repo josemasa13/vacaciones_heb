@@ -59,7 +59,7 @@ class DetalleEmpleadoViewController: UIViewController {
         if solicitud.justifRechazo != "" {
             lbJustificacion.text = solicitud.justifRechazo
         }else{
-            lbJustificacion.text = "Solicitud pendiente"
+            lbJustificacion.text = "N/A"
         }
     }
     
