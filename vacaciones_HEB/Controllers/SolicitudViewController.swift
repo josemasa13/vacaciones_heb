@@ -124,6 +124,7 @@ class SolicitudViewController: UIViewController {
         
         
         
+        
         db.collection("users").document(bossID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let jefeAux = document.data()!["name"] as! String
@@ -163,6 +164,7 @@ class SolicitudViewController: UIViewController {
     @IBAction func enviaDatos(_ sender: UIButton) {
         // Add a second document with a generated ID.
         //validating data
+        print(self.bossID)
         print(nombreJefe)
         print(nombreEmpleado)
         
